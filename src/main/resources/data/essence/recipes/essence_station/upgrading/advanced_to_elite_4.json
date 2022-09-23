@@ -1,0 +1,13 @@
+{
+  "type": "essence:essence_station_upgrading",
+  "ingredients": [
+    {
+     "item": "essence:advanced_mob_essence"
+    }
+  ],
+  "inCount": 8,
+  "output": {
+    "item": "essence:elite_mob_essence"
+  },
+  "outCount": 1
+}

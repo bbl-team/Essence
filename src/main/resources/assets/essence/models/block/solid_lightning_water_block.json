@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "essence:block/solid_lightning_water_block"
+  }
+}

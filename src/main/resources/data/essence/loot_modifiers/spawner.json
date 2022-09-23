@@ -1,0 +1,10 @@
+{
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:blocks/spawner"
+    }
+  ],
+  "addition": "essence:spawner_shard",
+  "type": "essence:spawner"
+}

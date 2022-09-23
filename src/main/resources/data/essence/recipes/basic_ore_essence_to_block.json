@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X X",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "essence:basic_ore_essence"
+    }
+  },
+  "result": {
+    "item": "essence:basic_ore_essence_block"
+  }
+}

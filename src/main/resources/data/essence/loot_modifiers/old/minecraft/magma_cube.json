@@ -1,0 +1,10 @@
+{
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/magma_cube"
+    }
+  ],
+  "addition": "essence:advanced_mob_essence",
+  "type": "essence:minecraft/magma_cube"
+}

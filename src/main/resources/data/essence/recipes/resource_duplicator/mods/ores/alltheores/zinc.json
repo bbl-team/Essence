@@ -1,0 +1,22 @@
+{
+  "type": "essence:resource_duplicator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alltheores"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "essence:basic_ore_essence"
+    },
+    {
+      "item": "alltheores:zinc_ingot"
+    }
+  ],
+  "essenceInCount": 3,
+  "output": {
+    "item": "alltheores:zinc_ingot"
+  },
+  "outCount": 1
+}

@@ -1,0 +1,16 @@
+{
+  "type": "essence:resource_duplicator",
+  "ingredients": [
+    {
+     "item": "essence:basic_ore_essence"
+    },
+    {
+     "item": "minecraft:copper_ingot"
+    }
+  ],
+  "essenceInCount": 1,
+  "output": {
+    "item": "minecraft:copper_ingot"
+  },
+  "outCount": 1
+}

@@ -1,0 +1,10 @@
+{
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/creeper"
+    }
+  ],
+  "addition": "essence:basic_mob_essence",
+  "type": "essence:minecraft/creeper"
+}

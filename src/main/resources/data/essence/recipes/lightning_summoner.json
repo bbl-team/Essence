@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  E",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:lightning_rod"
+    },
+    "E": {
+      "item": "essence:spawner_shard"
+    }
+  },
+  "result": {
+    "item": "essence:lightning_summoner",
+    "count": 1
+  }
+}

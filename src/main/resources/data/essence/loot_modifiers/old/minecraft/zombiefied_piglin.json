@@ -1,0 +1,10 @@
+{
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/zombiefied_piglin"
+    }
+  ],
+  "addition": "essence:advanced_mob_essence",
+  "type": "essence:minecraft/zombiefied_piglin"
+}

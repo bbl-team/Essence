@@ -1,0 +1,16 @@
+{
+  "type": "essence:resource_duplicator",
+  "ingredients": [
+    {
+     "item": "essence:basic_ore_essence"
+    },
+    {
+     "item": "minecraft:coal"
+    }
+  ],
+  "essenceInCount": 2,
+  "output": {
+    "item": "minecraft:coal"
+  },
+  "outCount": 1
+}

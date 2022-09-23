@@ -1,0 +1,126 @@
+Essence Changelog
+
+(1.19.X)
+
+2.0
+
+Press U on essence machines will now show there recipes and cateogries 
+Fixed JEI resource duplicator rendering items slightly too high
+Fixed mob essence recipes only using basic essence
+Resource duplicator now renders created items a lot nicer
+
+1.0
+
+Updated to 1.19
+Lightning water remade
+Now deal damage to player when inside it (peaceful 0 damage, easy 1 damage, normal 2 damage, hard 3 damage)
+Removed solid lightning water block
+Lighting water now created by using a lightning summoner on a waterlogged lightning rod
+Spawner shard extractor now working again
+Spawners broken with spawner shard extractor now always drops xp
+JEI (For items)
+Activated spawner shards no have the enchanted glow
+Machines removed may return later
+Basic ore, advanced ore, basic mob, basic ore essence blocks when placed in a pool of lightning water will transform into there upgraded tier with an essence upgrader is used on them
+Essence converter now converts blocks inworld
+Essence upgrader make the next tier
+Added essence ore, drops 1 - 3 basic ore essence when broken
+
+
+Tidy old files and code
+Essence ore configurable (WIP)
+
+8.8
+
+Updated machines to work with tinkers pickaxes and paxels
+Requires custom machinery 0.6.5 and higher
+
+8.7
+
+reverted 8.6 changes
+
+8.6
+
+Updated machines to work with tinkers tools
+
+8.5
+
+Updated to work with the latest version of custom machinery
+Machines can now be automated again without items going into the output slots
+Now checking for correct version of custom machines in mod loading to insure the correct version is being used
+
+
+8.4
+
+Machine now only needs a stone pickaxe to break
+
+(8.3)
+
+Added magma cube spawn egg recipe
+Buckets now remain in crafting table after crafting recipe
+
+(8.2)
+
+Added prismarine shard and crystal recipes
+Added amethyst recipes
+Lightning water blocks inside a lightning infuser now makes 8000mb of lightning water not 1000
+Lightning water consumption in essence converter block halved for all recipes
+    (Upgrading to higher essence now only costs 100mb instead  of 200mb)
+
+(8.1)
+
+Removed some old broken recipes
+Essence converter item no longer has durability making the converters fully automatable
+Lightning Infuser now has a recipe
+
+(8.0)
+
+OLD ESSENCE CONVERTER REMOVED MAKE SURE YOU TAKE YOUR OLD STUFF OUT
+
+Added lightning infuser, turn solid lightning water blocks into lightning water
+Removed a lot of old code relating to the old essence converter
+Disabled essences JEI integration
+Custom Machinery now a dependency
+Essence converter completely changed, Recipes the same but require certain amounts of fluids instead
+Essence converter recipe changed to use redstone and diamond instead of advanced and elite materials
+
+
+
+(7.4)
+
+Added and removed a few essence recipes
+
+(7.3)
+
+Players no longer drop essence on death
+Silk touching ore blocks no longer drops ore essence
+
+(7.2)
+
+Spawner extract now breaks when durability reaches 0
+
+(7.1)
+
+New blocks drop items now
+
+(7.0)
+
+Mob essence blocks more only require 8 essence instead of 9 to make blocks
+Added essence block converter recipe
+Added ore essence blocks
+Basic ore and basic mob essence now have tooltips with information
+Spider spawn egg recipe working now
+Essence converter can convert one block to the next higher tier of essence
+Essence converter outputs now correct amount
+Various block to essence and essence to block crafting recipes added
+
+(legacy)
+
+Fixed not launching in forge
+Add xp dropping from spawner shard extractor when the shards spawn
+Added remaining missing textures
+Adjusted advanced and elite block textures
+Spawner extractor now has durability and recipe
+Lightning summer has durability, recipe and name is fixed (this will remove old version of the item)
+Essence converter now converts ore essence to mob essence
+Tooltips added to some items in the mod

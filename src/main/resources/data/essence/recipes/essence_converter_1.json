@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BAB",
+    "AEA",
+    "BAB"
+  ],
+  "key": {
+    "B": {
+      "item": "essence:basic_ore_essence"
+    },
+    "A": {
+      "item": "minecraft:redstone"
+    },
+    "E": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "essence:essence_converter",
+    "count": 1
+  }
+}

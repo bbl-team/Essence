@@ -1,0 +1,22 @@
+{
+  "type": "essence:resource_duplicator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "allthemodium"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "essence:elite_ore_essence"
+    },
+    {
+      "item": "allthemodium:allthemodium_ingot"
+    }
+  ],
+  "essenceInCount": 8,
+  "output": {
+    "item": "allthemodium:allthemodium_ingot"
+  },
+  "outCount": 1
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "essence:advanced_mob_essence_block"
+    }
+  ],
+  "result": {
+    "item": "essence:advanced_mob_essence",
+    "count": 8
+  }
+}

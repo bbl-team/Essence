@@ -1,0 +1,22 @@
+{
+  "type": "essence:resource_duplicator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "undergarden"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "essence:elite_ore_essence"
+    },
+    {
+      "item": "undergarden:regalium_crystal"
+    }
+  ],
+  "essenceInCount": 2,
+  "output": {
+    "item": "undergarden:regalium_crystal"
+  },
+  "outCount": 1
+}

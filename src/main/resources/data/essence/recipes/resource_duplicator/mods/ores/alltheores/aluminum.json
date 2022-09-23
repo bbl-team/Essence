@@ -1,0 +1,22 @@
+{
+  "type": "essence:resource_duplicator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alltheores"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "essence:basic_ore_essence"
+    },
+    {
+      "item": "alltheores:aluminum_ingot"
+    }
+  ],
+  "essenceInCount": 2,
+  "output": {
+    "item": "alltheores:aluminum_ingot"
+  },
+  "outCount": 1
+}

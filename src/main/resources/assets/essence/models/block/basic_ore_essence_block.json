@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "essence:block/basic_ore_essence_block"
+  }
+}

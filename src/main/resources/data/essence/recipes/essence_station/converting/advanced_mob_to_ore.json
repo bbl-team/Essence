@@ -1,0 +1,11 @@
+{
+  "type": "essence:essence_station_converting",
+  "ingredients": [
+    {
+     "item": "essence:advanced_mob_essence"
+    }
+  ],
+  "output": {
+    "item": "essence:advanced_ore_essence"
+  }
+}

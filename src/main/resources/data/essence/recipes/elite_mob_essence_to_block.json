@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X X",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "essence:elite_mob_essence"
+    }
+  },
+  "result": {
+    "item": "essence:elite_mob_essence_block"
+  }
+}

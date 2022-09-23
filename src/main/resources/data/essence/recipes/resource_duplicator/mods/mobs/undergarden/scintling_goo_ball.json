@@ -1,0 +1,22 @@
+{
+  "type": "essence:resource_duplicator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "undergarden"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "essence:basic_mob_essence"
+    },
+    {
+      "item": "undergarden:goo_ball"
+    }
+  ],
+  "essenceInCount": 3,
+  "output": {
+    "item": "undergarden:goo_ball"
+  },
+  "outCount": 1
+}

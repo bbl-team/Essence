@@ -1,0 +1,16 @@
+{
+  "type": "essence:resource_duplicator",
+  "ingredients": [
+    {
+     "item": "essence:advanced_mob_essence"
+    },
+    {
+     "item": "minecraft:ender_pearl"
+    }
+  ],
+  "essenceInCount": 3,
+  "output": {
+    "item": "minecraft:ender_pearl"
+  },
+  "outCount": 1
+}

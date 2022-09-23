@@ -1,0 +1,10 @@
+{
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:blocks/deepslate_iron_ore"
+    }
+  ],
+  "addition": "essence:basic_ore_essence",
+  "type": "essence:ores/deepslate_iron"
+}

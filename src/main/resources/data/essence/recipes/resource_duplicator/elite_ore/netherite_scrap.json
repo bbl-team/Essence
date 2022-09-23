@@ -1,0 +1,16 @@
+{
+  "type": "essence:resource_duplicator",
+  "ingredients": [
+    {
+     "item": "essence:elite_ore_essence"
+    },
+    {
+     "item": "minecraft:netherite_scrap"
+    }
+  ],
+  "essenceInCount": 4,
+  "output": {
+    "item": "minecraft:netherite_scrap"
+  },
+  "outCount": 1
+}

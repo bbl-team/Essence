@@ -1,0 +1,22 @@
+{
+  "type": "essence:resource_duplicator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "undergarden"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "essence:advanced_ore_essence"
+    },
+    {
+      "item": "undergarden:utherium_crystal"
+    }
+  ],
+  "essenceInCount": 2,
+  "output": {
+    "item": "undergarden:utherium_crystal"
+  },
+  "outCount": 1
+}

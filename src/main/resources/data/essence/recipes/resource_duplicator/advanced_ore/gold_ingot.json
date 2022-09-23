@@ -1,0 +1,16 @@
+{
+  "type": "essence:resource_duplicator",
+  "ingredients": [
+    {
+     "item": "essence:advanced_ore_essence"
+    },
+    {
+     "item": "minecraft:gold_ingot"
+    }
+  ],
+  "essenceInCount": 4,
+  "output": {
+    "item": "minecraft:gold_ingot"
+  },
+  "outCount": 1
+}

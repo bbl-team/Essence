@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "1S1",
+    "SES",
+    "1S1"
+  ],
+  "key": {
+    "1": {
+      "item": "minecraft:wither_skeleton_skull"
+    },
+    "S": {
+      "item": "essence:activated_spawner_shard"
+    },
+    "E": {
+      "item": "essence:elite_mob_essence_block"
+    }
+  },
+  "result": {
+    "item": "minecraft:wither_skeleton_spawn_egg",
+    "count": 1
+  }
+}

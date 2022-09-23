@@ -1,0 +1,16 @@
+{
+  "type": "essence:resource_duplicator",
+  "ingredients": [
+    {
+     "item": "essence:basic_ore_essence"
+    },
+    {
+     "item": "minecraft:lapis_lazuli"
+    }
+  ],
+  "essenceInCount": 2,
+  "output": {
+    "item": "minecraft:lapis_lazuli"
+  },
+  "outCount": 1
+}

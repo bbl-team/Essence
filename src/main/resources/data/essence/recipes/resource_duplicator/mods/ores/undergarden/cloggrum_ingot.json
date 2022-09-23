@@ -1,0 +1,22 @@
+{
+  "type": "essence:resource_duplicator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "undergarden"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "essence:basic_ore_essence"
+    },
+    {
+      "item": "undergarden:cloggrum_ingot"
+    }
+  ],
+  "essenceInCount": 5,
+  "output": {
+    "item": "undergarden:cloggrum_ingot"
+  },
+  "outCount": 1
+}

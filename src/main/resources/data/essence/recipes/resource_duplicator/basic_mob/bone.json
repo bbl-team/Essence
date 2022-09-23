@@ -1,0 +1,16 @@
+{
+  "type": "essence:resource_duplicator",
+  "ingredients": [
+    {
+     "item": "essence:basic_mob_essence"
+    },
+    {
+     "item": "minecraft:bone"
+    }
+  ],
+  "essenceInCount": 2,
+  "output": {
+    "item": "minecraft:bone"
+  },
+  "outCount": 1
+}

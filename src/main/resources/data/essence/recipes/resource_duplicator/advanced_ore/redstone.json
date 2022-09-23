@@ -1,0 +1,16 @@
+{
+  "type": "essence:resource_duplicator",
+  "ingredients": [
+    {
+     "item": "essence:advanced_ore_essence"
+    },
+    {
+     "item": "minecraft:redstone"
+    }
+  ],
+  "essenceInCount": 1,
+  "output": {
+    "item": "minecraft:redstone"
+  },
+  "outCount": 1
+}

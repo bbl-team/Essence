@@ -1,0 +1,16 @@
+{
+  "type": "essence:resource_duplicator",
+  "ingredients": [
+    {
+     "item": "essence:elite_mob_essence"
+    },
+    {
+     "item": "minecraft:blaze_rod"
+    }
+  ],
+  "essenceInCount": 3,
+  "output": {
+    "item": "minecraft:blaze_rod"
+  },
+  "outCount": 1
+}

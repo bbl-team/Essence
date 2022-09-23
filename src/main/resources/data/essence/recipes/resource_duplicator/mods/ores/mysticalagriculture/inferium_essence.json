@@ -1,0 +1,22 @@
+{
+  "type": "essence:resource_duplicator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mysticalagriculture"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "essence:basic_ore_essence"
+    },
+    {
+      "item": "mysticalagriculture:inferium_essence"
+    }
+  ],
+  "essenceInCount": 1,
+  "output": {
+    "item": "mysticalagriculture:inferium_essence"
+  },
+  "outCount": 1
+}

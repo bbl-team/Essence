@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " S ",
+    "SBS",
+    " S "
+  ],
+  "key": {
+    "S": {
+      "item": "essence:spawner_shard"
+    },
+    "B": {
+      "item": "essence:lightning_water_bucket"
+    }
+  },
+  "result": {
+    "item": "essence:activated_spawner_shard",
+    "count": 4
+  }
+}
