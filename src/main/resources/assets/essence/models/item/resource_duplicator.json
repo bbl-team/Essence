@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "essence:block/resource_duplicator"
-  }
+  "parent": "essence:block/resource_duplicator"
 }

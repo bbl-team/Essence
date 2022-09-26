@@ -1,7 +1,8 @@
 {
-  "parent": "minecraft:block/cube_all",
-  "render_type": "cutout",
+  "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "all": "essence:block/resource_duplicator"
+    "bottom": "essence:block/essence_machine_bottom",
+    "side": "essence:block/resource_duplicator",
+    "top": "essence:block/essence_machine_top"
   }
 }

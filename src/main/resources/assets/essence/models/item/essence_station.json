@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "essence:block/essence_station"
-  }
+  "parent": "essence:block/essence_station"
 }

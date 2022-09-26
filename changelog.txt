@@ -2,6 +2,11 @@ Essence Changelog
 
 (1.19.X)
 
+3.0
+
+Added resource combiner and essence station recipes
+fixed machine textures
+
 2.0
 
 Press U on essence machines will now show there recipes and cateogries 
