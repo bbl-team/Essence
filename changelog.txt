@@ -5,11 +5,11 @@ Essence Changelog
 3.0
 
 Added resource combiner and essence station recipes
-fixed machine textures
+Machines now have a front
 
 2.0
 
-Press U on essence machines will now show there recipes and cateogries 
+Press U on essence machines will now show there recipes and categories
 Fixed JEI resource duplicator rendering items slightly too high
 Fixed mob essence recipes only using basic essence
 Resource duplicator now renders created items a lot nicer

@@ -1,8 +1,8 @@
 {
-  "parent": "minecraft:block/cube_bottom_top",
+  "parent": "minecraft:block/orientable",
   "textures": {
-    "bottom": "essence:block/essence_machine_bottom",
-    "side": "essence:block/resource_duplicator",
+    "front": "essence:block/resource_duplicator",
+    "side": "essence:block/essence_machine_side",
     "top": "essence:block/essence_machine_top"
   }
 }

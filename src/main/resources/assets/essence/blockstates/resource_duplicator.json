@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "essence:block/resource_duplicator",
+      "y": 90
+    },
+    "facing=north": {
       "model": "essence:block/resource_duplicator"
+    },
+    "facing=south": {
+      "model": "essence:block/resource_duplicator",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "essence:block/resource_duplicator",
+      "y": 270
     }
   }
 }
