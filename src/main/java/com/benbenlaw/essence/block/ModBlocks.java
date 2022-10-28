@@ -106,8 +106,6 @@ public class ModBlocks {
                     UniformInt.of(2, 4)));
 
 
-
-
     public static final RegistryObject<LiquidBlock> LIGHTNING_WATER_BLOCK = BLOCKS.register("lightning_water_block",
             () -> new LiquidBlock(ModFluids.SOURCE_LIGHTNING_WATER, BlockBehaviour.Properties.copy(Blocks.WATER)));
 

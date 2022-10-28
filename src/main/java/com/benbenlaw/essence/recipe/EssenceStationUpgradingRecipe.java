@@ -1,6 +1,7 @@
 package com.benbenlaw.essence.recipe;
 
 import com.benbenlaw.essence.Essence;
+import com.benbenlaw.essence.item.ModItems;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.minecraft.core.NonNullList;
@@ -11,6 +12,7 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.fml.common.Mod;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 public class EssenceStationUpgradingRecipe implements Recipe<SimpleContainer> {
@@ -75,7 +77,7 @@ public class EssenceStationUpgradingRecipe implements Recipe<SimpleContainer> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return null;
+        return Serializer.INSTANCE;
     }
 
     @Override

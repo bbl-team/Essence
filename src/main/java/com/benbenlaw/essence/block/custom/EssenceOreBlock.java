@@ -21,6 +21,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class EssenceOreBlock extends DropExperienceBlock {
     public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
@@ -93,6 +95,7 @@ public class EssenceOreBlock extends DropExperienceBlock {
 
     }
 
+   // @OnlyIn(Dist.CLIENT)
     private static void spawnParticles(Level p_55455_, BlockPos p_55456_) {
         double d0 = 0.5625D;
         RandomSource randomsource = p_55455_.random;

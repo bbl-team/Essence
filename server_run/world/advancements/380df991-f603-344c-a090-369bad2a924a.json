@@ -1,0 +1,27 @@
+{
+  "minecraft:recipes/decorations/campfire": {
+    "criteria": {
+      "has_coal": "2022-10-28 10:25:57 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/chest": {
+    "criteria": {
+      "has_lots_of_items": "2022-10-28 10:24:13 +0100"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/coal_block": {
+    "criteria": {
+      "has_coal": "2022-10-28 10:25:57 +0100"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:plains": "2022-10-28 10:21:57 +0100"
+    },
+    "done": false
+  },
+  "DataVersion": 3120
+}
