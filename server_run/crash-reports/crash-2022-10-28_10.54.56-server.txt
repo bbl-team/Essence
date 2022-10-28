@@ -1,0 +1,104 @@
+---- Minecraft Crash Report ----
+// You should try our sister game, Minceraft!
+
+Time: 2022-10-28 10:54:56
+Description: Exception in server tick loop
+
+java.lang.NoSuchMethodError: 'void com.benbenlaw.essence.block.custom.EssenceOreBlock.spawnParticles(net.minecraft.world.level.Level, net.minecraft.core.BlockPos)'
+	at com.benbenlaw.essence.block.custom.EssenceOreBlock.interact(EssenceOreBlock.java:63) ~[%23188!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at com.benbenlaw.essence.block.custom.EssenceOreBlock.attack(EssenceOreBlock.java:37) ~[%23188!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase.attack(BlockBehaviour.java:808) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading}
+	at net.minecraft.server.level.ServerPlayerGameMode.handleBlockBreakAction(ServerPlayerGameMode.java:163) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading}
+	at net.minecraft.server.network.ServerGamePacketListenerImpl.handlePlayerAction(ServerGamePacketListenerImpl.java:1052) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading}
+	at net.minecraft.network.protocol.game.ServerboundPlayerActionPacket.handle(ServerboundPlayerActionPacket.java:47) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading}
+	at net.minecraft.network.protocol.game.ServerboundPlayerActionPacket.handle(ServerboundPlayerActionPacket.java:8) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading}
+	at net.minecraft.network.protocol.PacketUtils.lambda$ensureRunningOnSameThread$0(PacketUtils.java:38) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading}
+	at net.minecraft.server.TickTask.run(TickTask.java:20) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading}
+	at net.minecraft.util.thread.BlockableEventLoop.doRunTask(BlockableEventLoop.java:146) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.util.thread.ReentrantBlockableEventLoop.doRunTask(ReentrantBlockableEventLoop.java:22) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading}
+	at net.minecraft.server.MinecraftServer.doRunTask(MinecraftServer.java:784) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.doRunTask(MinecraftServer.java:157) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.util.thread.BlockableEventLoop.pollTask(BlockableEventLoop.java:116) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.pollTaskInternal(MinecraftServer.java:767) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.pollTask(MinecraftServer.java:761) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.util.thread.BlockableEventLoop.managedBlock(BlockableEventLoop.java:129) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.waitUntilNextTick(MinecraftServer.java:747) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:676) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.lambda$spin$2(MinecraftServer.java:244) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading,pl:accesstransformer:B}
+	at java.lang.Thread.run(Thread.java:833) [?:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- System Details --
+Details:
+	Minecraft Version: 1.19.2
+	Minecraft Version ID: 1.19.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 17.0.3, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode, sharing), Oracle Corporation
+	Memory: 837676048 bytes (798 MiB) / 1728053248 bytes (1648 MiB) up to 17154703360 bytes (16360 MiB)
+	CPUs: 16
+	Processor Vendor: AuthenticAMD
+	Processor Name: AMD Ryzen 7 2700X Eight-Core Processor         
+	Identifier: AuthenticAMD Family 23 Model 8 Stepping 2
+	Microarchitecture: Zen+
+	Frequency (GHz): 3.69
+	Number of physical packages: 1
+	Number of physical CPUs: 8
+	Number of logical CPUs: 16
+	Graphics card #0 name: NVIDIA GeForce RTX 2060
+	Graphics card #0 vendor: NVIDIA (0x10de)
+	Graphics card #0 VRAM (MB): 4095.00
+	Graphics card #0 deviceId: 0x1f08
+	Graphics card #0 versionInfo: DriverVersion=30.0.15.1215
+	Memory slot #0 capacity (MB): 16384.00
+	Memory slot #0 clockSpeed (GHz): 2.13
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MB): 16384.00
+	Memory slot #1 clockSpeed (GHz): 2.13
+	Memory slot #1 type: DDR4
+	Memory slot #2 capacity (MB): 16384.00
+	Memory slot #2 clockSpeed (GHz): 2.13
+	Memory slot #2 type: DDR4
+	Memory slot #3 capacity (MB): 16384.00
+	Memory slot #3 clockSpeed (GHz): 2.13
+	Memory slot #3 type: DDR4
+	Virtual memory max (MB): 69524.55
+	Virtual memory used (MB): 41171.04
+	Swap memory total (MB): 4096.00
+	Swap memory used (MB): 10.07
+	JVM Flags: 0 total; 
+	Server Running: true
+	Player Count: 1 / 20; [ServerPlayer['Dev'/185, l='ServerLevel[world]', x=-100.41, y=71.00, z=106.71]]
+	Data Packs: vanilla, mod:forge, mod:essence (incompatible), mod:jei (incompatible)
+	World Generation: Experimental
+	Is Modded: Definitely; Server brand changed to 'forge'
+	Type: Dedicated Server (map_server.txt)
+	ModLauncher: 10.0.8+10.0.8+main.0ef7e830
+	ModLauncher launch target: forgeserveruserdev
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		mixin-0.8.5.jar mixin PLUGINSERVICE 
+		eventbus-6.0.3.jar eventbus PLUGINSERVICE 
+		fmlloader-1.19.2-43.0.11.jar slf4jfixer PLUGINSERVICE 
+		fmlloader-1.19.2-43.0.11.jar object_holder_definalize PLUGINSERVICE 
+		fmlloader-1.19.2-43.0.11.jar runtime_enum_extender PLUGINSERVICE 
+		fmlloader-1.19.2-43.0.11.jar capability_token_subclass PLUGINSERVICE 
+		accesstransformers-8.0.4.jar accesstransformer PLUGINSERVICE 
+		fmlloader-1.19.2-43.0.11.jar runtimedistcleaner PLUGINSERVICE 
+		modlauncher-10.0.8.jar mixin TRANSFORMATIONSERVICE 
+		modlauncher-10.0.8.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		minecraft@1.0
+		lowcodefml@null
+		javafml@null
+	Mod List: 
+		forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.|Minecraft                     |minecraft                     |1.19.2              |DONE      |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		                                                  |Forge                         |forge                         |43.0.11             |DONE      |Manifest: NOSIGNATURE
+		main                                              |Essence                       |essence                       |0.0NONE             |DONE      |Manifest: NOSIGNATURE
+		jei-1.19-forge-11.0.0.211_mapped_parchment_1.18.2-|Just Enough Items             |jei                           |11.0.0.211          |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: d5e3e16c-fa5c-4243-ae88-57e45bdbb83f
+	FML: 43.0
+	Forge: net.minecraftforge:43.0.11
