@@ -4,6 +4,8 @@ import com.benbenlaw.essence.Essence;
 import com.benbenlaw.essence.particles.ModParticles;
 import com.benbenlaw.essence.particles.custom.EssenceOreParticles;
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -12,6 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 
 public class ModEventBusEvents {
 
+    @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public static void registerParticleFactories(final RegisterParticleProvidersEvent event) {
         Minecraft.getInstance().particleEngine.register(ModParticles.ESSENCE_ORE_PARTICLES.get(),
