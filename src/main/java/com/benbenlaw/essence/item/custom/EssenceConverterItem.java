@@ -35,7 +35,7 @@ public class EssenceConverterItem extends Item {
 
             if (!world.isClientSide) {
 
-                world.setBlock(blockPos, ModBlocks.BASIC_ORE_ESSENCE_BLOCK.get().defaultBlockState(), 1);
+                world.setBlockAndUpdate(blockPos, ModBlocks.BASIC_ORE_ESSENCE_BLOCK.get().defaultBlockState());
 
                 pContext.getPlayer().getItemBySlot(EquipmentSlot.MAINHAND).hurtAndBreak(1, pContext.getPlayer(),
                         (player) -> player.broadcastBreakEvent(player.getUsedItemHand()));
@@ -46,7 +46,7 @@ public class EssenceConverterItem extends Item {
 
             if (!world.isClientSide) {
 
-                world.setBlock(blockPos, ModBlocks.BASIC_MOB_ESSENCE_BLOCK.get().defaultBlockState(), 1);
+                world.setBlockAndUpdate(blockPos, ModBlocks.BASIC_MOB_ESSENCE_BLOCK.get().defaultBlockState());
 
                 pContext.getPlayer().getItemBySlot(EquipmentSlot.MAINHAND).hurtAndBreak(1, pContext.getPlayer(),
                         (player) -> player.broadcastBreakEvent(player.getUsedItemHand()));
@@ -57,7 +57,7 @@ public class EssenceConverterItem extends Item {
 
             if (!world.isClientSide) {
 
-                world.setBlock(blockPos, ModBlocks.ADVANCED_MOB_ESSENCE_BLOCK.get().defaultBlockState(), 1);
+                world.setBlockAndUpdate(blockPos, ModBlocks.ADVANCED_MOB_ESSENCE_BLOCK.get().defaultBlockState());
 
                 pContext.getPlayer().getItemBySlot(EquipmentSlot.MAINHAND).hurtAndBreak(1, pContext.getPlayer(),
                         (player) -> player.broadcastBreakEvent(player.getUsedItemHand()));
@@ -67,7 +67,7 @@ public class EssenceConverterItem extends Item {
 
             if (!world.isClientSide) {
 
-                world.setBlock(blockPos, ModBlocks.ADVANCED_ORE_ESSENCE_BLOCK.get().defaultBlockState(), 1);
+                world.setBlockAndUpdate(blockPos, ModBlocks.ADVANCED_ORE_ESSENCE_BLOCK.get().defaultBlockState());
 
                 pContext.getPlayer().getItemBySlot(EquipmentSlot.MAINHAND).hurtAndBreak(1, pContext.getPlayer(),
                         (player) -> player.broadcastBreakEvent(player.getUsedItemHand()));
@@ -77,7 +77,7 @@ public class EssenceConverterItem extends Item {
 
             if (!world.isClientSide) {
 
-                world.setBlock(blockPos, ModBlocks.ELITE_MOB_ESSENCE_BLOCK.get().defaultBlockState(), 1);
+                world.setBlockAndUpdate(blockPos, ModBlocks.ELITE_MOB_ESSENCE_BLOCK.get().defaultBlockState());
 
                 pContext.getPlayer().getItemBySlot(EquipmentSlot.MAINHAND).hurtAndBreak(1, pContext.getPlayer(),
                         (player) -> player.broadcastBreakEvent(player.getUsedItemHand()));
@@ -87,7 +87,7 @@ public class EssenceConverterItem extends Item {
 
             if (!world.isClientSide) {
 
-                world.setBlock(blockPos, ModBlocks.ELITE_ORE_ESSENCE_BLOCK.get().defaultBlockState(), 1);
+                world.setBlockAndUpdate(blockPos, ModBlocks.ELITE_ORE_ESSENCE_BLOCK.get().defaultBlockState());
 
                 pContext.getPlayer().getItemBySlot(EquipmentSlot.MAINHAND).hurtAndBreak(1, pContext.getPlayer(),
                         (player) -> player.broadcastBreakEvent(player.getUsedItemHand()));

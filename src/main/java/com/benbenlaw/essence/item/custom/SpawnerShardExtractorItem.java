@@ -38,7 +38,7 @@ public class SpawnerShardExtractorItem extends Item {
 
         if (blockState.is(Blocks.SPAWNER)) {
 
-            world.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 1);
+            world.setBlockAndUpdate(blockPos, Blocks.AIR.defaultBlockState());
 
             world.addFreshEntity((new ExperienceOrb(world, blockPos.getX(), blockPos.getY(), blockPos.getZ(), randomXP)));
             world.addFreshEntity((new ExperienceOrb(world, blockPos.getX(), blockPos.getY(), blockPos.getZ(), randomXP)));

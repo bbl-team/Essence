@@ -12,7 +12,6 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.fml.common.Mod;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
 public class EssenceStationUpgradingRecipe implements Recipe<SimpleContainer> {
@@ -83,6 +82,11 @@ public class EssenceStationUpgradingRecipe implements Recipe<SimpleContainer> {
     @Override
     public RecipeType<?> getType() {
         return Type.INSTANCE;
+    }
+
+    @Override
+    public boolean isSpecial() {
+        return true;
     }
 
     public static class Type implements RecipeType<EssenceStationUpgradingRecipe> {

@@ -5,10 +5,10 @@
      "item": "essence:basic_ore_essence"
     },
     {
-     "item": "minecraft:copper_ingot"
+     "tag": "forge:ingots/copper"
     }
   ],
-  "essenceInCount": 1,
+  "essenceInCount": 2,
   "output": {
     "item": "minecraft:copper_ingot"
   },

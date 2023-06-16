@@ -48,7 +48,7 @@ public class EssenceUpgraderItem extends SimpleFoiledItem {
                 } else if (northBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get()) && southBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get())
                         && eastBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get()) && westBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get())) {
 
-                    world.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 1);
+                    world.setBlockAndUpdate(blockPos, Blocks.AIR.defaultBlockState());
 
                     pContext.getPlayer().getItemBySlot(EquipmentSlot.MAINHAND).hurtAndBreak(1, pContext.getPlayer(),
                             (player) -> player.broadcastBreakEvent(player.getUsedItemHand()));
@@ -71,7 +71,7 @@ public class EssenceUpgraderItem extends SimpleFoiledItem {
                 } else if (northBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get()) && southBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get())
                         && eastBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get()) && westBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get())) {
 
-                    world.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 1);
+                    world.setBlockAndUpdate(blockPos, Blocks.AIR.defaultBlockState());
 
                     pContext.getPlayer().getItemBySlot(EquipmentSlot.MAINHAND).hurtAndBreak(1, pContext.getPlayer(),
                             (player) -> player.broadcastBreakEvent(player.getUsedItemHand()));
@@ -94,7 +94,7 @@ public class EssenceUpgraderItem extends SimpleFoiledItem {
                 } else if (northBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get()) && southBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get())
                         && eastBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get()) && westBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get())) {
 
-                    world.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 1);
+                    world.setBlockAndUpdate(blockPos, Blocks.AIR.defaultBlockState());
 
                     pContext.getPlayer().getItemBySlot(EquipmentSlot.MAINHAND).hurtAndBreak(1, pContext.getPlayer(),
                             (player) -> player.broadcastBreakEvent(player.getUsedItemHand()));
@@ -117,7 +117,7 @@ public class EssenceUpgraderItem extends SimpleFoiledItem {
                 } else if (northBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get()) && southBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get())
                         && eastBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get()) && westBlock.is(ModFluids.SOURCE_LIGHTNING_WATER.get())) {
 
-                    world.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 1);
+                    world.setBlockAndUpdate(blockPos, Blocks.AIR.defaultBlockState());
 
                     pContext.getPlayer().getItemBySlot(EquipmentSlot.MAINHAND).hurtAndBreak(1, pContext.getPlayer(),
                             (player) -> player.broadcastBreakEvent(player.getUsedItemHand()));

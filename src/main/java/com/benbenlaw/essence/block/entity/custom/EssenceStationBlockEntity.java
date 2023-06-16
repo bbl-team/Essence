@@ -275,12 +275,12 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
 
         //Upgrading Recipe Checks
 
-        return recipeUpgrading.filter(essenceStationUpgradingRecipe -> entity.itemHandler.getStackInSlot(0).is(ModItems.ESSENCE_UPGRADER.get()) &&
+        return recipeUpgrading.filter(EssenceStationUpgradingRecipe -> entity.itemHandler.getStackInSlot(0).is(ModItems.ESSENCE_UPGRADER.get()) &&
                 hasEssenceUpgradeItem(entity) &&
                 canInsertAmountIntoOutputSlot(inventory) &&
-                hasCorrectCountInInputSlotUpgrading(entity, essenceStationUpgradingRecipe) &&
-                hasOutputSpaceMaking(entity, essenceStationUpgradingRecipe) &&
-                canInsertItemIntoOutputSlot(inventory, essenceStationUpgradingRecipe.getResultItem())).isPresent();
+                hasCorrectCountInInputSlotUpgrading(entity, EssenceStationUpgradingRecipe) &&
+                hasOutputSpaceMaking(entity, EssenceStationUpgradingRecipe) &&
+                canInsertItemIntoOutputSlot(inventory, EssenceStationUpgradingRecipe.getResultItem())).isPresent();
 
 
     }

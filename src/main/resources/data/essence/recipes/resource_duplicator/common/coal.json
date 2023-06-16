@@ -5,7 +5,7 @@
      "item": "essence:basic_ore_essence"
     },
     {
-     "item": "minecraft:coal"
+     "tag": "forge:gems/coal"
     }
   ],
   "essenceInCount": 2,

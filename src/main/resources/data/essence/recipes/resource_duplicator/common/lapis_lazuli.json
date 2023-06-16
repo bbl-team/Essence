@@ -5,7 +5,7 @@
      "item": "essence:basic_ore_essence"
     },
     {
-     "item": "minecraft:lapis_lazuli"
+     "tag": "forge:gems/lappis"
     }
   ],
   "essenceInCount": 2,

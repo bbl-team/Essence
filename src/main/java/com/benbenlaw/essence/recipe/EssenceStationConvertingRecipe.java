@@ -72,6 +72,11 @@ public class EssenceStationConvertingRecipe implements Recipe<SimpleContainer> {
         return Type.INSTANCE;
     }
 
+    @Override
+    public boolean isSpecial() {
+        return true;
+    }
+
     public static class Type implements RecipeType<EssenceStationConvertingRecipe> {
         private Type() { }
         public static final Type INSTANCE = new Type();

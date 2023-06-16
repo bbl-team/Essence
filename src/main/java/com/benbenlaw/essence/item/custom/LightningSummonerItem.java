@@ -49,7 +49,7 @@ public class LightningSummonerItem extends Item {
             LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(world);
             lightning.setPos(Vec3.upFromBottomCenterOf(blockPos, 1));
             world.addFreshEntity(lightning);
-            world.setBlock(blockPos, ModBlocks.LIGHTNING_WATER_BLOCK.get().defaultBlockState(), 1);
+            world.setBlockAndUpdate(blockPos, ModBlocks.LIGHTNING_WATER_BLOCK.get().defaultBlockState());
             pContext.getPlayer().getItemBySlot(EquipmentSlot.MAINHAND).hurtAndBreak(1, pContext.getPlayer(),
                     (player) -> player.broadcastBreakEvent(player.getUsedItemHand()));
 

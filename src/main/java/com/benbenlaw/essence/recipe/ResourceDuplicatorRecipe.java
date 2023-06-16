@@ -88,6 +88,11 @@ public class ResourceDuplicatorRecipe implements Recipe<SimpleContainer> {
         return Type.INSTANCE;
     }
 
+    @Override
+    public boolean isSpecial() {
+        return true;
+    }
+
     public static class Type implements RecipeType<ResourceDuplicatorRecipe> {
         private Type() { }
         public static final Type INSTANCE = new Type();
