@@ -1,0 +1,16 @@
+{
+  "type": "essence:essence_station",
+  "ingredients": [
+    {
+     "item": "essence:lightning_infuser"
+    },
+    {
+     "item": "essence:spawner_shard"
+    }
+  ],
+  "itemInCount": 2,
+  "output": {
+    "item": "essence:activated_spawner_shard",
+    "count": 1
+  }
+}

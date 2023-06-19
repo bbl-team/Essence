@@ -1,0 +1,16 @@
+{
+  "type": "essence:essence_station",
+  "ingredients": [
+    {
+     "item": "essence:essence_upgrader"
+    },
+    {
+     "item": "essence:advanced_ore_essence"
+    }
+  ],
+  "itemInCount": 8,
+  "output": {
+    "item": "essence:elite_ore_essence",
+    "count": 1
+  }
+}

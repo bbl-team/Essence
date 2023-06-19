@@ -4,6 +4,43 @@ Essence Changelog
 
 //TODO mod result slot for machines
 
+2.0.0
+
+Updated to 1.20 and 1.20.1
+Removed essence converting and upgrading recipe types
+    now uses essence station recipe type which can do both
+Essence station;
+    output slot can no longer have items inserted into it
+    catalyst slot now only accepts items from the "essence:essence_station_catalysts" tag
+    sides now configured better for better in-world interactions with hoppers
+
+Resource Duplicator
+    output slot can no longer have items inserted into it
+    catalyst slot now only accepts items from the "essence:essences" tag
+    now renders the item its making on the front of the block
+
+Removed old JEI information
+Spawners now drop a spawner shard when broken
+    these can be used to make spawners, right click a spawn egg on a spawner to spawn that mob
+Lightning water buckets now made in the essence station with water bucket and new catalyst "lightning infuser"
+Spawner shard extract and lightning wand removed
+Added blank spawn egg
+Many textures refreshed
+Essence ore removed
+Added Basic, Advanced and Elite Essence ore (with custom particles)
+Deleted old recipes
+
+New recipe
+Spawn eggs
+witches
+cave spider
+drowned
+endermite
+pillager
+phansom
+stray
+
+
 1.4.0
 
 Recipes are now special types stopping the spam of "Render thread/WARN] [minecraft/ClientRecipeBook]: Unknown recipe category:" in the logs

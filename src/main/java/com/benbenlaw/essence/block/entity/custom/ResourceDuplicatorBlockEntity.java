@@ -2,18 +2,16 @@ package com.benbenlaw.essence.block.entity.custom;
 
 import com.benbenlaw.essence.block.entity.IInventoryHandlingBlockEntity;
 import com.benbenlaw.essence.block.entity.ModBlockEntities;
-import com.benbenlaw.essence.item.ModItems;
 import com.benbenlaw.essence.networking.ModMessages;
 import com.benbenlaw.essence.networking.packets.PacketSyncItemStackToClient;
-import com.benbenlaw.essence.recipe.EssenceStationConvertingRecipe;
 import com.benbenlaw.essence.recipe.ResourceDuplicatorRecipe;
-import com.benbenlaw.essence.recipe.EssenceStationUpgradingRecipe;
 import com.benbenlaw.essence.screen.ResourceDuplicatorMenu;
+import com.benbenlaw.essence.util.ModTags;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -26,8 +24,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
@@ -35,7 +33,6 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuProvider, IInventoryHandlingBlockEntity {
@@ -58,16 +55,40 @@ public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuPr
                             (index, stack) -> index == 1 && itemHandler.isItemValid(1, stack))),
 
                     Direction.NORTH, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> index == 0,
-                            (index, stack) -> index == 0 && itemHandler.isItemValid(0, stack))),
+                            (index, stack) -> {
+                                if (index == 0 && itemHandler.isItemValid(0, stack)) {
+                                    // Add a condition to check for the specific item you want to allow
+                                    return stack.getTags().anyMatch(ModTags.Items.ESSENCES::equals);
+                                }
+                                return false;
+                            })),
 
                     Direction.SOUTH, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> index == 0,
-                            (index, stack) -> index == 0 && itemHandler.isItemValid(0, stack))),
-
-                    Direction.WEST, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> index == 0,
-                            (index, stack) -> index == 0 && itemHandler.isItemValid(0, stack))),
+                            (index, stack) -> {
+                                if (index == 0 && itemHandler.isItemValid(0, stack)) {
+                                    // Add a condition to check for the specific item you want to allow
+                                    return stack.getTags().anyMatch(ModTags.Items.ESSENCES::equals);
+                                }
+                                return false;
+                            })),
 
                     Direction.EAST, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> index == 0,
-                            (index, stack) -> index == 0 && itemHandler.isItemValid(0, stack)))
+                            (index, stack) -> {
+                                if (index == 0 && itemHandler.isItemValid(0, stack)) {
+                                    // Add a condition to check for the specific item you want to allow
+                                    return stack.getTags().anyMatch(ModTags.Items.ESSENCES::equals);
+                                }
+                                return false;
+                            })),
+
+                    Direction.WEST, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> index == 0,
+                            (index, stack) -> {
+                                if (index == 0 && itemHandler.isItemValid(0, stack)) {
+                                    // Add a condition to check for the specific item you want to allow
+                                    return stack.getTags().anyMatch(ModTags.Items.ESSENCES::equals);
+                                }
+                                return false;
+                            }))
             );
 
     protected final ContainerData data;
@@ -139,7 +160,7 @@ public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuPr
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
-        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
             return lazyItemHandler.cast();
         }
         return super.getCapability(cap);
@@ -148,7 +169,7 @@ public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuPr
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @javax.annotation.Nullable Direction side) {
-        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
             return directionWrappedHandlerMap.get(side).cast();
         }
 
@@ -195,7 +216,16 @@ public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuPr
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
-    public static void tick(Level level, BlockPos pos, BlockState state, ResourceDuplicatorBlockEntity pEntity) {
+
+
+    public void tick() {
+
+        Level pLevel = this.level;
+        BlockPos pos  = this.worldPosition;
+        assert pLevel != null;
+        BlockState state = pLevel.getBlockState(pos);
+        ResourceDuplicatorBlockEntity pEntity = this;
+
         if (level.isClientSide()) {
             return;
         }
@@ -232,7 +262,8 @@ public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuPr
 
             pEntity.itemHandler.extractItem(0, recipeDuplicator.get().getEssenceInCount(), false);
 
-            pEntity.itemHandler.setStackInSlot(2, new ItemStack(recipeDuplicator.get().getResultItem().getItem(),
+            assert Minecraft.getInstance().level != null;
+            pEntity.itemHandler.setStackInSlot(2, new ItemStack(recipeDuplicator.get().getResultItem(Minecraft.getInstance().level.registryAccess()).getItem(),
                     pEntity.itemHandler.getStackInSlot(2).getCount() + recipeDuplicator.get().getOutCount()));
 
         }
@@ -252,11 +283,14 @@ public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuPr
 
         //Various Checks to create the item
 
-        return recipeDuplicator.filter(resourceDuplicatorRecipe -> hasMakingItem(entity, recipeDuplicator.get()) &&
-                canInsertAmountIntoOutputSlot(inventory) &&
-                hasCorrectCountInInputSlotMaking(entity, recipeDuplicator.get()) &&
-                hasOutputSpaceMaking(entity, recipeDuplicator.get()) &&
-                canInsertItemIntoOutputSlot(inventory, resourceDuplicatorRecipe.getResultItem())).isPresent();
+        return recipeDuplicator.filter(resourceDuplicatorRecipe -> {
+            if (!hasMakingItem(entity, recipeDuplicator.get()) ||
+                    !canInsertAmountIntoOutputSlot(inventory) ||
+                    !hasCorrectCountInInputSlotMaking(entity, recipeDuplicator.get()) ||
+                    !hasOutputSpaceMaking(entity, recipeDuplicator.get())) return false;
+            assert Minecraft.getInstance().level != null;
+            return canInsertItemIntoOutputSlot(inventory, resourceDuplicatorRecipe.getResultItem(Minecraft.getInstance().level.registryAccess()));
+        }).isPresent();
     }
 
     private static boolean hasCorrectCountInInputSlotMaking(ResourceDuplicatorBlockEntity entity, ResourceDuplicatorRecipe recipe) {
@@ -264,7 +298,8 @@ public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuPr
     }
 
     private static boolean hasMakingItem(ResourceDuplicatorBlockEntity entity, ResourceDuplicatorRecipe recipe) {
-        return recipe.getResultItem().getItem() == entity.itemHandler.getStackInSlot(1).getItem();
+        assert Minecraft.getInstance().level != null;
+        return recipe.getResultItem(Minecraft.getInstance().level.registryAccess()).getItem() == entity.itemHandler.getStackInSlot(1).getItem();
     }
 
     private static boolean hasOutputSpaceMaking(ResourceDuplicatorBlockEntity entity, ResourceDuplicatorRecipe recipe) {

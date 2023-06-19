@@ -1,0 +1,16 @@
+{
+  "type": "essence:essence_station",
+  "ingredients": [
+    {
+     "item": "essence:lightning_infuser"
+    },
+    {
+     "item": "minecraft:egg"
+    }
+  ],
+  "itemInCount": 1,
+  "output": {
+    "item": "essence:blank_spawn_egg",
+    "count": 1
+  }
+}

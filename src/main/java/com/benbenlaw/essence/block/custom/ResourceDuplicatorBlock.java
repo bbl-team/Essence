@@ -95,9 +95,8 @@ public class ResourceDuplicatorBlock extends BaseEntityBlock {
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-
-        return createTickerHelper(type, ModBlockEntities.RESOURCE_DUPLICATOR.get(),
-                ResourceDuplicatorBlockEntity::tick);
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.RESOURCE_DUPLICATOR.get(),
+                (world, blockPos, blockState, blockEntity) -> blockEntity.tick());
     }
 }

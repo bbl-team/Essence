@@ -1,11 +1,8 @@
 package com.benbenlaw.essence.block;
 
 import com.benbenlaw.essence.Essence;
-import com.benbenlaw.essence.block.custom.EssenceOreBlock;
-import com.benbenlaw.essence.block.custom.EssenceStationBlock;
-import com.benbenlaw.essence.block.custom.ResourceDuplicatorBlock;
+import com.benbenlaw.essence.block.custom.*;
 import com.benbenlaw.essence.fluid.ModFluids;
-import com.benbenlaw.essence.item.ModCreativeModTab;
 import com.benbenlaw.essence.item.ModItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -21,7 +18,6 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -39,13 +35,13 @@ public class ModBlocks {
     //New BE
 
     public static final RegistryObject<Block> ESSENCE_STATION = registerBlock("essence_station",
-            () -> new EssenceStationBlock(BlockBehaviour.Properties.of(Material.STONE)
+            () -> new EssenceStationBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
                     .requiresCorrectToolForDrops()
                     .strength(2.0f, 2.0f)
                     .sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> RESOURCE_DUPLICATOR = registerBlock("resource_duplicator",
-            () -> new ResourceDuplicatorBlock(BlockBehaviour.Properties.of(Material.STONE)
+            () -> new ResourceDuplicatorBlock(BlockBehaviour.Properties.copy(Blocks.STONE)
                     .requiresCorrectToolForDrops()
                     .strength(2.0f, 2.0f)
                     .noOcclusion()
@@ -54,51 +50,83 @@ public class ModBlocks {
     //New Blocks
 
     public static final RegistryObject<Block> BASIC_MOB_ESSENCE_BLOCK = registerBlock("basic_mob_essence_block",
-            () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)
                     .requiresCorrectToolForDrops()
                     .strength(2.0f, 2.0f)
                     .sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ADVANCED_MOB_ESSENCE_BLOCK = registerBlock("advanced_mob_essence_block",
-            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .requiresCorrectToolForDrops()
                     .strength(2.5f, 2.5f)
                     .sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ELITE_MOB_ESSENCE_BLOCK = registerBlock("elite_mob_essence_block",
-            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .requiresCorrectToolForDrops()
                     .strength(3.0f, 3.0f)
                     .sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> BASIC_ORE_ESSENCE_BLOCK = registerBlock("basic_ore_essence_block",
-            () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .requiresCorrectToolForDrops()
                     .strength(2.0f, 2.0f)
                     .sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ADVANCED_ORE_ESSENCE_BLOCK = registerBlock("advanced_ore_essence_block",
-            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .requiresCorrectToolForDrops()
                     .strength(2.5f, 2.5f)
                     .sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> ELITE_ORE_ESSENCE_BLOCK = registerBlock("elite_ore_essence_block",
-            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .requiresCorrectToolForDrops()
                     .strength(3.0f, 3.0f)
                     .sound(SoundType.STONE)));
 
-    public static final RegistryObject<Block> ESSENCE_ORE = registerBlock("essence_ore",
-            () -> new EssenceOreBlock(BlockBehaviour.Properties.of(Material.METAL)
+    public static final RegistryObject<Block> BASIC_ESSENCE_ORE = registerBlock("basic_essence_ore",
+            () -> new BasicEssenceOreBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .requiresCorrectToolForDrops()
                     .strength(3.0f, 3.0f)
                     .sound(SoundType.STONE)
                     .lightLevel(litBlockEmission(9)),
                     UniformInt.of(2, 4)));
 
-    public static final RegistryObject<Block> DEEPSLATE_ESSENCE_ORE = registerBlock("deepslate_essence_ore",
-            () -> new EssenceOreBlock(BlockBehaviour.Properties.of(Material.METAL)
+    public static final RegistryObject<Block> DEEPSLATE_BASIC_ESSENCE_ORE = registerBlock("deepslate_basic_essence_ore",
+            () -> new BasicEssenceOreBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                    .requiresCorrectToolForDrops()
+                    .strength(3.5f, 3.0f)
+                    .sound(SoundType.STONE)
+                    .lightLevel(litBlockEmission(9)),
+                    UniformInt.of(2, 4)));
+
+    public static final RegistryObject<Block> ADVANCED_ESSENCE_ORE = registerBlock("advanced_essence_ore",
+            () -> new AdvancedEssenceOreBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                    .requiresCorrectToolForDrops()
+                    .strength(3.0f, 3.0f)
+                    .sound(SoundType.STONE)
+                    .lightLevel(litBlockEmission(9)),
+                    UniformInt.of(2, 4)));
+
+    public static final RegistryObject<Block> DEEPSLATE_ADVANCED_ESSENCE_ORE = registerBlock("deepslate_advanced_essence_ore",
+            () -> new AdvancedEssenceOreBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                    .requiresCorrectToolForDrops()
+                    .strength(3.5f, 3.0f)
+                    .sound(SoundType.STONE)
+                    .lightLevel(litBlockEmission(9)),
+                    UniformInt.of(2, 4)));
+
+    public static final RegistryObject<Block> ELITE_ESSENCE_ORE = registerBlock("elite_essence_ore",
+            () -> new EliteEssenceOreBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
+                    .requiresCorrectToolForDrops()
+                    .strength(3.0f, 3.0f)
+                    .sound(SoundType.STONE)
+                    .lightLevel(litBlockEmission(9)),
+                    UniformInt.of(2, 4)));
+
+    public static final RegistryObject<Block> DEEPSLATE_ELITE_ESSENCE_ORE = registerBlock("deepslate_elite_essence_ore",
+            () -> new EliteEssenceOreBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)
                     .requiresCorrectToolForDrops()
                     .strength(3.5f, 3.0f)
                     .sound(SoundType.STONE)
@@ -108,12 +136,6 @@ public class ModBlocks {
 
     public static final RegistryObject<LiquidBlock> LIGHTNING_WATER_BLOCK = BLOCKS.register("lightning_water_block",
             () -> new LiquidBlock(ModFluids.SOURCE_LIGHTNING_WATER, BlockBehaviour.Properties.copy(Blocks.WATER)));
-
-
-
-
-
-
 
     //Light Level When Interacted With
 
@@ -133,7 +155,7 @@ public class ModBlocks {
 
     private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block, String tooltipKey) {
         ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
-                new Item.Properties().tab(ModCreativeModTab.ESSENCE)){
+                new Item.Properties()){
             @Override
             public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
                 pTooltip.add(Component.translatable(tooltipKey));
@@ -150,7 +172,7 @@ public class ModBlocks {
 
     private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block) {
         ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
-                new Item.Properties().tab(ModCreativeModTab.ESSENCE)));
+                new Item.Properties()));
 
     }
 

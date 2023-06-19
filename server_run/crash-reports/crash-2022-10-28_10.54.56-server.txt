@@ -4,9 +4,9 @@
 Time: 2022-10-28 10:54:56
 Description: Exception in server tick loop
 
-java.lang.NoSuchMethodError: 'void com.benbenlaw.essence.block.custom.EssenceOreBlock.spawnParticles(net.minecraft.world.level.Level, net.minecraft.core.BlockPos)'
-	at com.benbenlaw.essence.block.custom.EssenceOreBlock.interact(EssenceOreBlock.java:63) ~[%23188!/:?] {re:classloading,pl:runtimedistcleaner:A}
-	at com.benbenlaw.essence.block.custom.EssenceOreBlock.attack(EssenceOreBlock.java:37) ~[%23188!/:?] {re:classloading,pl:runtimedistcleaner:A}
+java.lang.NoSuchMethodError: 'void com.benbenlaw.essence.block.custom.BasicEssenceOreBlock.spawnParticles(net.minecraft.world.level.Level, net.minecraft.core.BlockPos)'
+	at com.benbenlaw.essence.block.custom.BasicEssenceOreBlock.interact(EssenceOreBlock.java:63) ~[%23188!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at com.benbenlaw.essence.block.custom.BasicEssenceOreBlock.attack(EssenceOreBlock.java:37) ~[%23188!/:?] {re:classloading,pl:runtimedistcleaner:A}
 	at net.minecraft.world.level.block.state.BlockBehaviour$BlockStateBase.attack(BlockBehaviour.java:808) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading}
 	at net.minecraft.server.level.ServerPlayerGameMode.handleBlockBreakAction(ServerPlayerGameMode.java:163) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading}
 	at net.minecraft.server.network.ServerGamePacketListenerImpl.handlePlayerAction(ServerGamePacketListenerImpl.java:1052) ~[forge-1.19.2-43.0.11_mapped_parchment_1.18.2-2022.03.13-1.19-recomp.jar%23183!/:?] {re:classloading}

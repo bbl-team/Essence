@@ -17,11 +17,6 @@ public final class ConfigFile {
     public static final ForgeConfigSpec.ConfigValue<Integer> minEssenceOreSpawnHeight;
     public static final ForgeConfigSpec.ConfigValue<Integer> maxEssenceOreSpawnHeight;
 
- //   public static final ForgeConfigSpec.ConfigValue<Double> allOresChance;
-
- //   public static final ForgeConfigSpec.ConfigValue<Double> basicOreEssenceChance;
- //   public static final ForgeConfigSpec.ConfigValue<Double> advancedOreEssenceChance;
- //   public static final ForgeConfigSpec.ConfigValue<Double> eliteOreEssenceChance;
 
     static {
         BUILDER.push("Essence config file");

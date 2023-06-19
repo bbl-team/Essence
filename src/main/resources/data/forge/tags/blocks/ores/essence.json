@@ -1,7 +1,11 @@
 {
   "replace": false,
   "values": [
-    "essence:essence_ore",
-    "essence:deepslate_essence_ore"
+    "essence:basic_essence_ore",
+    "essence:deepslate_basic_essence_ore",
+    "essence:advanced_essence_ore",
+    "essence:deepslate_advanced_essence_ore",
+    "essence:elite_essence_ore",
+    "essence:deepslate_elite_essence_ore"
   ]
 }

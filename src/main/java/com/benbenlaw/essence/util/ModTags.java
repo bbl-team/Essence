@@ -17,9 +17,6 @@ public class ModTags {
 
         public static final TagKey<Block> ESSENCE_ORE = forgeTag("ores/essence");
 
-
-
-
         private static TagKey<Block> tag(String name) {
             return BlockTags.create(new ResourceLocation(Essence.MOD_ID, name));
         }
@@ -33,11 +30,11 @@ public class ModTags {
     //New Item Tags
 
     public static class Items {
-        public static final TagKey<Item> ESSENCE_ESSENCES = tag("essence_essences");
+        public static final TagKey<Item> ESSENCES = tag("essences");
+        public static final TagKey<Item> ESSENCE_STATION_CATALYSTS = tag("essence_station_catalysts");
 
 
-
-
+        public static final TagKey<Item> ESSENCE_ORE = forgeTag("ores/essence");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(Essence.MOD_ID, name));

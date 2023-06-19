@@ -7,6 +7,9 @@
   "item.essence.advanced_ore_essence": "Advanced Ore Essence",
   "item.essence.elite_ore_essence": "Elite Ore Essence",
 
+  "item.essence.lightning_infuser": "Lightning Infuser",
+  "item.essence.blank_spawn_egg": "Blank Spawn Egg",
+
   "item.essence.activated_spawner_shard": "Activated Spawner Shard",
   "item.essence.spawner_shard": "Spawner Shard",
   "item.essence.lightning_water_bucket": "Lightning Water Bucket",
@@ -23,8 +26,14 @@
   "block.essence.elite_ore_essence_block": "Elite Ore Essence Block",
   "block.essence.solid_lightning_water_block": "Solid Lightning Water Block",
   "block.essence.essence_converter_block": "Essence Converter Block",
-  "block.essence.essence_ore": "Essence Ore",
-  "block.essence.deepslate_essence_ore": "Deepslate Essence Ore",
+
+  "block.essence.basic_essence_ore": "Basic Essence Ore",
+  "block.essence.deepslate_basic_essence_ore": "Deepslate Basic Essence Ore",
+  "block.essence.advanced_essence_ore": "Advanced Essence Ore",
+  "block.essence.deepslate_advanced_essence_ore": "Deepslate Advanced Essence Ore",
+  "block.essence.elite_essence_ore": "Elite Essence Ore",
+  "block.essence.deepslate_elite_essence_ore": "Deepslate Elite Essence Ore",
+
   "block.essence.essence_station": "Essence Station",
   "block.essence.resource_duplicator": "Resource Duplicator",
 
@@ -44,7 +53,7 @@
   "tooltip.essence.spawner_shard_extractor.tooltip.shift": "Right clicking on a spawner will break the block with a chance to get spawner shards",
   "tooltip.essence.spawner_shard_extractor.tooltip": "Press SHIFT for more Info",
 
-  "jei.essence.spawner_shard": "These shards can be collected by right clicking a on a spawner with a spawner shard extractor.",
+  "jei.essence.spawner_shard": "These shards can be collected when breaking spawners in the world.",
   "jei.essence.spawner_shard_extractor": "When right clicked on a spawner the spawner will break and drop experience, sometimes spawner shards will drop too.",
   "jei.essence.lightning_water_block": "By using a lightning summoner on a waterlogged lightning rod you can create lightning water.",
   "jei.essence.activated_spawner_shard": "These shards can be used to make spawn eggs.",

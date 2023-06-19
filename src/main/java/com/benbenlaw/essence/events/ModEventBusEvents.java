@@ -17,35 +17,17 @@ public class ModEventBusEvents {
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public static void registerParticleFactories(final RegisterParticleProvidersEvent event) {
-        Minecraft.getInstance().particleEngine.register(ModParticles.ESSENCE_ORE_PARTICLES.get(),
+        Minecraft.getInstance().particleEngine.register(ModParticles.BASIC_ESSENCE_ORE_PARTICLES.get(),
                 EssenceOreParticles.Provider::new);
+
+        Minecraft.getInstance().particleEngine.register(ModParticles.ADVANCED_ESSENCE_ORE_PARTICLES.get(),
+                EssenceOreParticles.Provider::new);
+
+        Minecraft.getInstance().particleEngine.register(ModParticles.ELITE_ESSENCE_ORE_PARTICLES.get(),
+                EssenceOreParticles.Provider::new);
+
     }
-
-
 }
-/*
-
-
-    @SubscribeEvent
-    public static void registerModifierSerializers(@Nonnull final RegisterEvent event) {
-        event.register(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, helper -> {
-
-            helper.register(new ResourceLocation(Essence.MOD_ID, "spawner"),
-                    (Codec<? extends IGlobalLootModifier>) new SpawnerAdditionModifier.Serializer());
-
-        });
-
-        event.register((ForgeRegistries.Keys.RECIPE_TYPES, helper -> {
-            helper.register(new ResourceLocation(Essence.MOD_ID, EssenceConverterRecipe.Type.ID),
-                    EssenceConverterRecipe.Type.INSTANCE);
-        });
-    }
-
-}
-
- */
-
-
 
 
 

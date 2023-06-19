@@ -8,7 +8,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class EssenceOreParticles extends TextureSheetParticle {
     protected EssenceOreParticles(ClientLevel level, double xCoord, double yCoord, double zCoord,
-                                SpriteSet spriteSet, double xd, double yd, double zd) {
+                                       SpriteSet spriteSet, double xd, double yd, double zd) {
         super(level, xCoord, yCoord, zCoord, xd, yd, zd);
 
         this.friction = 0.8F;

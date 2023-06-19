@@ -2,6 +2,9 @@ package com.benbenlaw.essence.screen;
 
 import com.benbenlaw.essence.block.ModBlocks;
 import com.benbenlaw.essence.block.entity.custom.ResourceDuplicatorBlockEntity;
+import com.benbenlaw.essence.screen.slot.MaxStackSizeOneSlot;
+import com.benbenlaw.essence.screen.slot.ModResultSlot;
+import com.benbenlaw.essence.screen.slot.ResourceDuplicatorCatalystSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -9,7 +12,7 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class ResourceDuplicatorMenu extends AbstractContainerMenu {
@@ -19,23 +22,23 @@ public class ResourceDuplicatorMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public ResourceDuplicatorMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-        this(id, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(id, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
     public ResourceDuplicatorMenu(int id, Inventory inv, BlockEntity entity, ContainerData data){
         super(ModMenuTypes.RESOURCE_DUPLICATOR_MENU.get(), id);
         checkContainerSize(inv, 3);
         blockEntity = (ResourceDuplicatorBlockEntity) entity;
-        this.level = inv.player.level;
+        this.level = inv.player.level();
         this.data = data;
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 12, 16));
-            this.addSlot(new SlotItemHandler(handler, 1, 86, 16));
-            this.addSlot(new SlotItemHandler(handler, 2, 86, 60));
+        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
+            this.addSlot(new ResourceDuplicatorCatalystSlot(handler, 0, 12, 16));
+            this.addSlot(new MaxStackSizeOneSlot(handler, 1, 86, 16));
+            this.addSlot(new ModResultSlot(handler, 2, 86, 60));
         });
 
         addDataSlots(data);

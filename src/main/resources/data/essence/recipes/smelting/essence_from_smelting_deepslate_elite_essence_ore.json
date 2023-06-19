@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "essence:deepslate_elite_essence_ore"
+  },
+  "result": "essence:elite_ore_essence",
+  "experience": 0.35,
+  "cookingtime": 200
+}
