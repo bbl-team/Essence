@@ -5,15 +5,15 @@ import com.benbenlaw.essence.block.entity.ModBlockEntities;
 import com.benbenlaw.essence.config.ConfigFile;
 import com.benbenlaw.essence.fluid.ModFluidTypes;
 import com.benbenlaw.essence.fluid.ModFluids;
+import com.benbenlaw.essence.item.ModCreativeTab;
 import com.benbenlaw.essence.item.ModItems;
+import com.benbenlaw.essence.loot.ModLootModifiers;
 import com.benbenlaw.essence.networking.ModMessages;
+import com.benbenlaw.essence.particles.ModParticles;
 import com.benbenlaw.essence.recipe.ModRecipes;
 import com.benbenlaw.essence.screen.EssenceStationScreen;
 import com.benbenlaw.essence.screen.ModMenuTypes;
 import com.benbenlaw.essence.screen.ResourceDuplicatorScreen;
-import com.benbenlaw.essence.world.feature.ModConfiguredFeatures;
-import com.benbenlaw.essence.world.feature.ModPlacedFeatures;
-import com.benbenlaw.essence.particles.ModParticles;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -47,19 +47,20 @@ public class Essence {
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigFile.SPEC, "essence_common.toml");
 
+        ModCreativeTab.register(eventBus);
+
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
         ModBlockEntities.register(eventBus);
 
         ModMenuTypes.register(eventBus);
 
+        ModLootModifiers.register(eventBus);
+
         ModFluids.register(eventBus);
         ModFluidTypes.register(eventBus);
 
         ModParticles.register(eventBus);
-
-        ModConfiguredFeatures.register(eventBus);
-        ModPlacedFeatures.register(eventBus);
 
         ModRecipes.register(eventBus);
 
@@ -76,9 +77,7 @@ public class Essence {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            ModMessages.register();
-        });
+        event.enqueueWork(ModMessages::register);
 
     }
 

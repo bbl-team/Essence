@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "essence:basic_ore_essence",
+    "essence:basic_mob_essence",
+    "essence:advanced_ore_essence",
+    "essence:advanced_mob_essence",
+    "essence:elite_ore_essence",
+    "essence:elite_mob_essence"
+  ]
+}

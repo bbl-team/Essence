@@ -2,7 +2,6 @@ package com.benbenlaw.essence.integration;
 
 import com.benbenlaw.essence.Essence;
 import com.benbenlaw.essence.block.ModBlocks;
-import com.benbenlaw.essence.recipe.EssenceStationUpgradingRecipe;
 import com.benbenlaw.essence.recipe.ResourceDuplicatorRecipe;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -12,6 +11,7 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -58,9 +58,9 @@ public class ResourceDuplicatorRecipeCategory implements IRecipeCategory<Resourc
                 .addItemStack(new ItemStack(recipe.getIngredients().get(0).getItems()[0].getItem(), recipe.getEssenceInCount()));
 
         builder.addSlot(RecipeIngredientRole.CATALYST, 86, 16)
-                .addItemStack(new ItemStack(recipe.getResultItem().getItem()));
+                .addItemStack(new ItemStack(recipe.getResultItem(Minecraft.getInstance().level.registryAccess()).getItem()));
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 86, 60) //.addItemStack(recipe.getResultItem());
-                .addItemStack(new ItemStack(recipe.getResultItem().getItem(), recipe.getOutCount()));
+                .addItemStack(new ItemStack(recipe.getResultItem(Minecraft.getInstance().level.registryAccess()).getItem(), recipe.getOutCount()));
     }
 }

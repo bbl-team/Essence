@@ -26,19 +26,19 @@ public class InformationJEI implements IModPlugin {
     public void registerRecipes(IRecipeRegistration reg) {
 
         reg.addIngredientInfo(new ItemStack(ModItems.SPAWNER_SHARD.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.spawner_shard"));
-        reg.addIngredientInfo(new ItemStack(ModItems.SPAWNER_SHARD_EXTRACTOR.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.spawner_shard_extractor"));
-        reg.addIngredientInfo(new ItemStack(ModItems.LIGHTNING_WATER_BUCKET.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.lightning_water_block"));
-        reg.addIngredientInfo(new ItemStack(ModBlocks.LIGHTNING_WATER_BLOCK.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.lightning_water_block"));
-        reg.addIngredientInfo(new ItemStack(ModItems.ACTIVATED_SPAWNER_SHARD.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.activated_spawner_shard"));
-        reg.addIngredientInfo(new ItemStack(ModItems.ESSENCE_UPGRADER.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.essence_upgrader"));
-        reg.addIngredientInfo(new ItemStack(ModItems.ESSENCE_CONVERTER.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.essence_converter"));
-
-        reg.addIngredientInfo(new ItemStack(ModItems.BASIC_MOB_ESSENCE.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.basic_mob_essence"));
-        reg.addIngredientInfo(new ItemStack(ModItems.BASIC_ORE_ESSENCE.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.basic_ore_essence"));
-        reg.addIngredientInfo(new ItemStack(ModItems.ADVANCED_MOB_ESSENCE.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.advanced_mob_essence"));
-        reg.addIngredientInfo(new ItemStack(ModItems.ADVANCED_ORE_ESSENCE.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.advanced_ore_essence"));
-        reg.addIngredientInfo(new ItemStack(ModItems.ELITE_MOB_ESSENCE.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.elite_mob_essence"));
-        reg.addIngredientInfo(new ItemStack(ModItems.ELITE_ORE_ESSENCE.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.elite_ore_essence"));
+    //    reg.addIngredientInfo(new ItemStack(ModItems.SPAWNER_SHARD_EXTRACTOR.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.spawner_shard_extractor"));
+    //    reg.addIngredientInfo(new ItemStack(ModItems.LIGHTNING_WATER_BUCKET.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.lightning_water_block"));
+    //    reg.addIngredientInfo(new ItemStack(ModBlocks.LIGHTNING_WATER_BLOCK.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.lightning_water_block"));
+    //    reg.addIngredientInfo(new ItemStack(ModItems.ACTIVATED_SPAWNER_SHARD.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.activated_spawner_shard"));
+    //    reg.addIngredientInfo(new ItemStack(ModItems.ESSENCE_UPGRADER.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.essence_upgrader"));
+    //    reg.addIngredientInfo(new ItemStack(ModItems.ESSENCE_CONVERTER.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.essence_converter"));
+//
+    //    reg.addIngredientInfo(new ItemStack(ModItems.BASIC_MOB_ESSENCE.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.basic_mob_essence"));
+    //    reg.addIngredientInfo(new ItemStack(ModItems.BASIC_ORE_ESSENCE.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.basic_ore_essence"));
+    //    reg.addIngredientInfo(new ItemStack(ModItems.ADVANCED_MOB_ESSENCE.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.advanced_mob_essence"));
+    //    reg.addIngredientInfo(new ItemStack(ModItems.ADVANCED_ORE_ESSENCE.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.advanced_ore_essence"));
+    //    reg.addIngredientInfo(new ItemStack(ModItems.ELITE_MOB_ESSENCE.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.elite_mob_essence"));
+    //    reg.addIngredientInfo(new ItemStack(ModItems.ELITE_ORE_ESSENCE.get()), VanillaTypes.ITEM_STACK, Component.translatable("jei.essence.elite_ore_essence"));
 
 
     }

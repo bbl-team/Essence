@@ -1,0 +1,16 @@
+{
+  "type": "essence:essence_station",
+  "ingredients": [
+    {
+     "item": "essence:lightning_infuser"
+    },
+    {
+     "item": "minecraft:water_bucket"
+    }
+  ],
+  "itemInCount": 1,
+  "output": {
+    "item": "essence:lightning_water_bucket",
+    "count": 1
+  }
+}

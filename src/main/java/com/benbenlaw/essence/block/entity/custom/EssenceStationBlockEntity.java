@@ -3,13 +3,18 @@ package com.benbenlaw.essence.block.entity.custom;
 import com.benbenlaw.essence.block.entity.IInventoryHandlingBlockEntity;
 import com.benbenlaw.essence.block.entity.ModBlockEntities;
 import com.benbenlaw.essence.item.ModItems;
-import com.benbenlaw.essence.recipe.EssenceStationConvertingRecipe;
-import com.benbenlaw.essence.recipe.EssenceStationUpgradingRecipe;
+import com.benbenlaw.essence.networking.ModMessages;
+import com.benbenlaw.essence.networking.packets.PacketSyncItemStackToClient;
+import com.benbenlaw.essence.recipe.EssenceStationRecipe;
 import com.benbenlaw.essence.screen.EssenceStationMenu;
+import com.benbenlaw.essence.util.ModTags;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
@@ -23,8 +28,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
@@ -32,6 +37,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 public class EssenceStationBlockEntity extends BlockEntity implements MenuProvider, IInventoryHandlingBlockEntity {
@@ -40,9 +46,9 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
-            //         if(!level.isClientSide()) {
-            //             ModMessages.sendToClients(new PacketSyncItemStackToClient(this, worldPosition));
-            //         }
+            if(!level.isClientSide()) {
+                ModMessages.sendToClients(new PacketSyncItemStackToClient(this, worldPosition));
+            }
         }
     };
 
@@ -54,33 +60,45 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
                             (index, stack) -> index == 1 && itemHandler.isItemValid(1, stack))),
 
                     Direction.NORTH, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> index == 0,
-                            (index, stack) -> index == 0 && itemHandler.isItemValid(0, stack))),
+                            (index, stack) -> {
+                                if (index == 0 && itemHandler.isItemValid(0, stack)) {
+                                    // Add a condition to check for the specific item you want to allow
+                                    return stack.getTags().anyMatch(ModTags.Items.ESSENCE_STATION_CATALYSTS::equals);
+                                }
+                                return false;
+                    })),
 
                     Direction.SOUTH, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> index == 0,
-                            (index, stack) -> index == 0 && itemHandler.isItemValid(0, stack))),
-
-                    Direction.WEST, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> index == 0,
-                            (index, stack) -> index == 0 && itemHandler.isItemValid(0, stack))),
+                            (index, stack) -> {
+                                if (index == 0 && itemHandler.isItemValid(0, stack)) {
+                                    // Add a condition to check for the specific item you want to allow
+                                    return stack.getTags().anyMatch(ModTags.Items.ESSENCE_STATION_CATALYSTS::equals);
+                                }
+                                return false;
+                    })),
 
                     Direction.EAST, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> index == 0,
-                            (index, stack) -> index == 0 && itemHandler.isItemValid(0, stack)))
+                            (index, stack) -> {
+                                if (index == 0 && itemHandler.isItemValid(0, stack)) {
+                                    // Add a condition to check for the specific item you want to allow
+                                    return stack.getTags().anyMatch(ModTags.Items.ESSENCE_STATION_CATALYSTS::equals);
+                                }
+                                return false;
+                    })),
+
+                    Direction.WEST, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> index == 0,
+                            (index, stack) -> {
+                                if (index == 0 && itemHandler.isItemValid(0, stack)) {
+                                    // Add a condition to check for the specific item you want to allow
+                                    return stack.getTags().anyMatch(ModTags.Items.ESSENCE_STATION_CATALYSTS::equals);
+                                }
+                                return false;
+                    }))
             );
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 78;
-
-    public ItemStack getRenderStack() {
-        ItemStack stack;
-
-        if (!itemHandler.getStackInSlot(0).isEmpty()) {
-            stack = itemHandler.getStackInSlot(0);
-        } else {
-            stack = itemHandler.getStackInSlot(1);
-        }
-
-        return stack;
-    }
+    private int maxProgress = 80;
 
     public void setHandler(ItemStackHandler handler) {
         copyHandlerContents(handler);
@@ -136,7 +154,7 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
 
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap) {
-        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
             return lazyItemHandler.cast();
         }
         return super.getCapability(cap);
@@ -145,7 +163,7 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @javax.annotation.Nullable Direction side) {
-        if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
             return directionWrappedHandlerMap.get(side).cast();
         }
 
@@ -192,10 +210,13 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
-    public static void tick(Level level, BlockPos pos, BlockState state, EssenceStationBlockEntity pEntity) {
-        if (level.isClientSide()) {
-            return;
-        }
+    public void tick() {
+
+        Level pLevel = this.level;
+        BlockPos pos  = this.worldPosition;
+        assert pLevel != null;
+        BlockState state = pLevel.getBlockState(pos);
+        EssenceStationBlockEntity pEntity = this;
 
         if (hasRecipe(pEntity)) {
             pEntity.progress++;
@@ -221,29 +242,16 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
             inventory.setItem(i, pEntity.itemHandler.getStackInSlot(i));
         }
 
-        Optional<EssenceStationConvertingRecipe> recipeConverting = level.getRecipeManager()
-                .getRecipeFor(EssenceStationConvertingRecipe.Type.INSTANCE, inventory, level);
+        Optional<EssenceStationRecipe> essenceRecipe = level.getRecipeManager()
+                .getRecipeFor(EssenceStationRecipe.Type.INSTANCE, inventory, level);
 
-        Optional<EssenceStationUpgradingRecipe> recipeUpgrading = level.getRecipeManager()
-                .getRecipeFor(EssenceStationUpgradingRecipe.Type.INSTANCE, inventory, level);
+        if (essenceRecipe.isPresent()) {
 
-        if (recipeConverting.isPresent()) {
+            pEntity.itemHandler.extractItem(1, essenceRecipe.get().getItemInCount(), false);
+            assert Minecraft.getInstance().level != null;
 
-            pEntity.itemHandler.extractItem(1, 1, false);
-            pEntity.itemHandler.setStackInSlot(2, new ItemStack(recipeConverting.get().getResultItem().getItem(),
-                    pEntity.itemHandler.getStackInSlot(2).getCount() + 1));
-
-            if (pEntity.itemHandler.getStackInSlot(0).hurt(1, RandomSource.create(), null)) {
-                pEntity.itemHandler.extractItem(0, 1, false);
-            }
-        }
-
-        if (recipeUpgrading.isPresent()) {
-            pEntity.itemHandler.extractItem(1, recipeUpgrading.get().getInCount(), false);
-
-
-            pEntity.itemHandler.setStackInSlot(2, new ItemStack(recipeUpgrading.get().getResultItem().getItem(),
-                    pEntity.itemHandler.getStackInSlot(2).getCount() + recipeUpgrading.get().getOutCount()));
+            pEntity.itemHandler.setStackInSlot(2, new ItemStack(essenceRecipe.get().getResultItem(Minecraft.getInstance().level.registryAccess()).getItem(),
+                    pEntity.itemHandler.getStackInSlot(2).getCount() + essenceRecipe.get().getResultItem(Minecraft.getInstance().level.registryAccess()).getCount()));
 
             if (pEntity.itemHandler.getStackInSlot(0).hurt(1, RandomSource.create(), null)) {
                 pEntity.itemHandler.extractItem(0, 1, false);
@@ -251,6 +259,14 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
         }
 
         pEntity.resetProgress();
+    }
+
+    private static void playLightningSound(EssenceStationBlockEntity pEntity) {
+        if (pEntity.itemHandler.getStackInSlot(0).is(ModItems.LIGHTNING_INFUSER.get())){
+            assert pEntity.level != null;
+            pEntity.level.playLocalSound(pEntity.getBlockPos().getX(), pEntity.getBlockPos().getY(), pEntity.getBlockPos().getZ(), SoundEvents.LIGHTNING_BOLT_IMPACT, SoundSource.BLOCKS, (float) 0.5, 3, false);
+
+        }
     }
 
     private static boolean hasRecipe(EssenceStationBlockEntity entity) {
@@ -261,59 +277,36 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
         }
 
         assert level != null;
-        Optional<EssenceStationConvertingRecipe> recipeConverting = level.getRecipeManager()
-                .getRecipeFor(EssenceStationConvertingRecipe.Type.INSTANCE, inventory, level);
+        Optional<EssenceStationRecipe> essenceRecipe = level.getRecipeManager()
+                .getRecipeFor(EssenceStationRecipe.Type.INSTANCE, inventory, level);
 
-        Optional<EssenceStationUpgradingRecipe> recipeUpgrading = level.getRecipeManager()
-                .getRecipeFor(EssenceStationUpgradingRecipe.Type.INSTANCE, inventory, level);
+        if (essenceRecipe.isEmpty() || !canInsertAmountIntoOutputSlot(inventory)) return false;
 
-        if (recipeConverting.isPresent()) {
-            return entity.itemHandler.getStackInSlot(0).is(ModItems.ESSENCE_CONVERTER.get()) &&
-                 canInsertAmountIntoOutputSlot(inventory) &&
-                 canInsertItemIntoOutputSlot(inventory, recipeConverting.get().getResultItem());
-        }
-
-        //Upgrading Recipe Checks
-
-        return recipeUpgrading.filter(EssenceStationUpgradingRecipe -> entity.itemHandler.getStackInSlot(0).is(ModItems.ESSENCE_UPGRADER.get()) &&
-                hasEssenceUpgradeItem(entity) &&
-                canInsertAmountIntoOutputSlot(inventory) &&
-                hasCorrectCountInInputSlotUpgrading(entity, EssenceStationUpgradingRecipe) &&
-                hasOutputSpaceMaking(entity, EssenceStationUpgradingRecipe) &&
-                canInsertItemIntoOutputSlot(inventory, EssenceStationUpgradingRecipe.getResultItem())).isPresent();
-
-
+        assert Minecraft.getInstance().level != null;
+        return
+               canInsertItemIntoOutputSlot(inventory, essenceRecipe.get().getResultItem(Minecraft.getInstance().level.registryAccess()))
+                && hasOutputSpaceMaking(entity, essenceRecipe.get())
+                && hasCorrectItemCatalyst(entity, essenceRecipe.get())
+                && hasCorrectItemRecipe(entity, essenceRecipe.get())
+                && hasCorrectCountInInputSlotUpgrading(entity, essenceRecipe.get());
     }
 
-    //Converting Methods
-
-    private static boolean hasEssenceConverterItem(EssenceStationBlockEntity entity) {
-        return entity.itemHandler.getStackInSlot(0).getItem() == ModItems.ESSENCE_CONVERTER.get();
+    private static boolean hasCorrectItemCatalyst(EssenceStationBlockEntity entity, EssenceStationRecipe recipe) {
+        return entity.itemHandler.getStackInSlot(0).getItem() == recipe.getIngredients().get(0).getItems()[0].getItem();
     }
 
-    private static boolean hasConvertingItem(EssenceStationBlockEntity entity, EssenceStationConvertingRecipe recipe) {
-        return entity.itemHandler.getStackInSlot(1).getItem() == recipe.getIngredients().get(0).getItems()[0].getItem();
+    private static boolean hasCorrectItemRecipe(EssenceStationBlockEntity entity, EssenceStationRecipe recipe) {
+        return entity.itemHandler.getStackInSlot(1).getItem() == recipe.getIngredients().get(1).getItems()[0].getItem();
     }
 
-    //Upgrading Methods
-
-    private static boolean hasCorrectCountInInputSlotUpgrading(EssenceStationBlockEntity entity, EssenceStationUpgradingRecipe recipe) {
-        return entity.itemHandler.getStackInSlot(1).getCount() >= recipe.getInCount();
+    private static boolean hasCorrectCountInInputSlotUpgrading(EssenceStationBlockEntity entity, EssenceStationRecipe recipe) {
+        return entity.itemHandler.getStackInSlot(1).getCount() >= recipe.getItemInCount();
     }
 
-    private static boolean hasEssenceUpgradeItem(EssenceStationBlockEntity entity) {
-        return entity.itemHandler.getStackInSlot(0).getItem() == ModItems.ESSENCE_UPGRADER.get();
-    }
-
-    private static boolean hasOutputSpaceMaking(EssenceStationBlockEntity entity, EssenceStationUpgradingRecipe recipe) {
-        return entity.itemHandler.getStackInSlot(2).getCount() + recipe.getOutCount() - 1 <
+    private static boolean hasOutputSpaceMaking(EssenceStationBlockEntity entity, EssenceStationRecipe recipe) {
+        return entity.itemHandler.getStackInSlot(2).getCount() + recipe.getResultItem(Minecraft.getInstance().level.registryAccess()).getCount() - 1 <
                 entity.itemHandler.getStackInSlot(2).getMaxStackSize();
     }
-
-
-
-
-
 
     private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack stack) {
         return inventory.getItem(2).getItem() == stack.getItem() || inventory.getItem(2).isEmpty();

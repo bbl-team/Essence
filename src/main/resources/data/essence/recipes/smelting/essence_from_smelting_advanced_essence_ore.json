@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "essence:advanced_essence_ore"
+  },
+  "result": "essence:advanced_ore_essence",
+  "experience": 0.35,
+  "cookingtime": 200
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "essence:advanced_essence_ore"
+  },
+  "result": "essence:advanced_ore_essence",
+  "experience": 0.7,
+  "cookingtime": 200
+}

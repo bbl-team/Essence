@@ -1,0 +1,22 @@
+{
+  "type": "essence:resource_duplicator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "essence:advanced_ore_essence"
+    },
+    {
+      "item": "mekanism:ingot_lead"
+    }
+  ],
+  "essenceInCount": 3,
+  "output": {
+    "item": "mekanism:ingot_lead"
+  },
+  "outCount": 1
+}

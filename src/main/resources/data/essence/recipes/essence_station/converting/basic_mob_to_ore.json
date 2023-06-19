@@ -1,11 +1,15 @@
 {
-  "type": "essence:essence_station_converting",
+  "type": "essence:essence_station",
   "ingredients": [
+    {
+     "item": "essence:essence_converter"
+    },
     {
      "item": "essence:basic_mob_essence"
     }
   ],
   "output": {
-    "item": "essence:basic_ore_essence"
+    "item": "essence:basic_ore_essence",
+    "count": 1
   }
 }

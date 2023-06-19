@@ -96,9 +96,9 @@ public class EssenceStationBlock extends BaseEntityBlock {
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-
-        return createTickerHelper(type, ModBlockEntities.ESSENCE_STATION.get(),
-                EssenceStationBlockEntity::tick);
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.ESSENCE_STATION.get(),
+                (world, blockPos, blockState, blockEntity) -> blockEntity.tick());
     }
+
 }
