@@ -1,8 +1,14 @@
 Essence Changelog
 
-(1.19.X)
+2.0.2
 
-//TODO mod result slot for machines
+Fixed crash when breaking the resource duplicator if it had an item in it
+Fixed crashes with resource duplicator and essence station if a recipe was started on a server
+
+2.0.1
+
+Updated Logo
+Fixed station and duplicator sometimes showing an extra item briefly during crafting recipes
 
 2.0.0
 

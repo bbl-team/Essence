@@ -12,6 +12,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -23,6 +25,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -33,6 +36,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuProvider, IInventoryHandlingBlockEntity {
@@ -42,7 +46,7 @@ public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuPr
         protected void onContentsChanged(int slot) {
             setChanged();
             if(!level.isClientSide()) {
-                ModMessages.sendToClients(new PacketSyncItemStackToClient(this, worldPosition));
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
             }
         }
     };
@@ -247,31 +251,34 @@ public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuPr
         this.progress = 0;
     }
 
-    private static void craftItem(ResourceDuplicatorBlockEntity pEntity) {
+    private void craftItem(ResourceDuplicatorBlockEntity pEntity) {
         Level level = pEntity.level;
-        SimpleContainer inventory = new SimpleContainer(pEntity.itemHandler.getSlots());
-        for (int i = 0; i < pEntity.itemHandler.getSlots(); i++) {
-            inventory.setItem(i, pEntity.itemHandler.getStackInSlot(i));
-        }
 
-        Optional<ResourceDuplicatorRecipe> recipeDuplicator = level.getRecipeManager()
-                .getRecipeFor(ResourceDuplicatorRecipe.Type.INSTANCE, inventory, level);
+        assert level != null;
+        if(!level.isClientSide()) {
 
+            SimpleContainer inventory = new SimpleContainer(pEntity.itemHandler.getSlots());
+            for (int i = 0; i < pEntity.itemHandler.getSlots(); i++) {
+                inventory.setItem(i, pEntity.itemHandler.getStackInSlot(i));
+            }
 
-        if (recipeDuplicator.isPresent()) {
+            Optional<ResourceDuplicatorRecipe> recipeDuplicator = level.getRecipeManager()
+                    .getRecipeFor(ResourceDuplicatorRecipe.Type.INSTANCE, inventory, level);
 
-            pEntity.itemHandler.extractItem(0, recipeDuplicator.get().getEssenceInCount(), false);
+            if (recipeDuplicator.isPresent()) {
 
-            assert Minecraft.getInstance().level != null;
-            pEntity.itemHandler.setStackInSlot(2, new ItemStack(recipeDuplicator.get().getResultItem(Minecraft.getInstance().level.registryAccess()).getItem(),
-                    pEntity.itemHandler.getStackInSlot(2).getCount() + recipeDuplicator.get().getOutCount()));
+                pEntity.itemHandler.extractItem(0, recipeDuplicator.get().getEssenceInCount(), false);
 
+                pEntity.itemHandler.setStackInSlot(2, new ItemStack(recipeDuplicator.get().getResultItem(Objects.requireNonNull(getLevel()).registryAccess()).getItem(),
+                        pEntity.itemHandler.getStackInSlot(2).getCount() + recipeDuplicator.get().getOutCount()));
+
+            }
         }
 
         pEntity.resetProgress();
     }
 
-    private static boolean hasRecipe(ResourceDuplicatorBlockEntity entity) {
+    private boolean hasRecipe(ResourceDuplicatorBlockEntity entity) {
         Level level = entity.level;
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
         for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
@@ -288,30 +295,29 @@ public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuPr
                     !canInsertAmountIntoOutputSlot(inventory) ||
                     !hasCorrectCountInInputSlotMaking(entity, recipeDuplicator.get()) ||
                     !hasOutputSpaceMaking(entity, recipeDuplicator.get())) return false;
-            assert Minecraft.getInstance().level != null;
-            return canInsertItemIntoOutputSlot(inventory, resourceDuplicatorRecipe.getResultItem(Minecraft.getInstance().level.registryAccess()));
+            return canInsertItemIntoOutputSlot(inventory, resourceDuplicatorRecipe.getResultItem(Objects.requireNonNull(getLevel()).registryAccess()));
         }).isPresent();
     }
 
-    private static boolean hasCorrectCountInInputSlotMaking(ResourceDuplicatorBlockEntity entity, ResourceDuplicatorRecipe recipe) {
+    private boolean hasCorrectCountInInputSlotMaking(ResourceDuplicatorBlockEntity entity, ResourceDuplicatorRecipe recipe) {
         return entity.itemHandler.getStackInSlot(0).getCount() >= recipe.getEssenceInCount();
     }
 
-    private static boolean hasMakingItem(ResourceDuplicatorBlockEntity entity, ResourceDuplicatorRecipe recipe) {
+    private boolean hasMakingItem(ResourceDuplicatorBlockEntity entity, ResourceDuplicatorRecipe recipe) {
         assert Minecraft.getInstance().level != null;
-        return recipe.getResultItem(Minecraft.getInstance().level.registryAccess()).getItem() == entity.itemHandler.getStackInSlot(1).getItem();
+        return recipe.getResultItem(Objects.requireNonNull(getLevel()).registryAccess()).getItem() == entity.itemHandler.getStackInSlot(1).getItem();
     }
 
-    private static boolean hasOutputSpaceMaking(ResourceDuplicatorBlockEntity entity, ResourceDuplicatorRecipe recipe) {
+    private boolean hasOutputSpaceMaking(ResourceDuplicatorBlockEntity entity, ResourceDuplicatorRecipe recipe) {
         return entity.itemHandler.getStackInSlot(2).getCount() + recipe.getOutCount() - 1 <
                 entity.itemHandler.getStackInSlot(2).getMaxStackSize();
     }
 
-    private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack stack) {
+    private boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack stack) {
         return inventory.getItem(2).getItem() == stack.getItem() || inventory.getItem(2).isEmpty();
     }
 
-    private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
+    private boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
         return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount();
     }
 

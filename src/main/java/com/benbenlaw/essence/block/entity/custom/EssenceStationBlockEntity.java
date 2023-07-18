@@ -235,33 +235,38 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
         this.progress = 0;
     }
 
-    private static void craftItem(EssenceStationBlockEntity pEntity) {
+    private void craftItem(EssenceStationBlockEntity pEntity) {
         Level level = pEntity.level;
-        SimpleContainer inventory = new SimpleContainer(pEntity.itemHandler.getSlots());
-        for (int i = 0; i < pEntity.itemHandler.getSlots(); i++) {
-            inventory.setItem(i, pEntity.itemHandler.getStackInSlot(i));
-        }
 
-        Optional<EssenceStationRecipe> essenceRecipe = level.getRecipeManager()
-                .getRecipeFor(EssenceStationRecipe.Type.INSTANCE, inventory, level);
+        assert level != null;
+        if(!level.isClientSide()) {
 
-        if (essenceRecipe.isPresent()) {
+            SimpleContainer inventory = new SimpleContainer(pEntity.itemHandler.getSlots());
+            for (int i = 0; i < pEntity.itemHandler.getSlots(); i++) {
+                inventory.setItem(i, pEntity.itemHandler.getStackInSlot(i));
+            }
 
-            pEntity.itemHandler.extractItem(1, essenceRecipe.get().getItemInCount(), false);
-            assert Minecraft.getInstance().level != null;
+            Optional<EssenceStationRecipe> essenceRecipe = level.getRecipeManager()
+                    .getRecipeFor(EssenceStationRecipe.Type.INSTANCE, inventory, level);
 
-            pEntity.itemHandler.setStackInSlot(2, new ItemStack(essenceRecipe.get().getResultItem(Minecraft.getInstance().level.registryAccess()).getItem(),
-                    pEntity.itemHandler.getStackInSlot(2).getCount() + essenceRecipe.get().getResultItem(Minecraft.getInstance().level.registryAccess()).getCount()));
+            if (essenceRecipe.isPresent()) {
 
-            if (pEntity.itemHandler.getStackInSlot(0).hurt(1, RandomSource.create(), null)) {
-                pEntity.itemHandler.extractItem(0, 1, false);
+                pEntity.itemHandler.extractItem(1, essenceRecipe.get().getItemInCount(), false);
+                assert Minecraft.getInstance().level != null;
+
+                pEntity.itemHandler.setStackInSlot(2, new ItemStack(essenceRecipe.get().getResultItem(Objects.requireNonNull(getLevel()).registryAccess()).getItem(),
+                        pEntity.itemHandler.getStackInSlot(2).getCount() + essenceRecipe.get().getResultItem(Objects.requireNonNull(getLevel()).registryAccess()).getCount()));
+
+                if (pEntity.itemHandler.getStackInSlot(0).hurt(1, RandomSource.create(), null)) {
+                    pEntity.itemHandler.extractItem(0, 1, false);
+                }
             }
         }
 
         pEntity.resetProgress();
     }
 
-    private static void playLightningSound(EssenceStationBlockEntity pEntity) {
+    private void playLightningSound(EssenceStationBlockEntity pEntity) {
         if (pEntity.itemHandler.getStackInSlot(0).is(ModItems.LIGHTNING_INFUSER.get())){
             assert pEntity.level != null;
             pEntity.level.playLocalSound(pEntity.getBlockPos().getX(), pEntity.getBlockPos().getY(), pEntity.getBlockPos().getZ(), SoundEvents.LIGHTNING_BOLT_IMPACT, SoundSource.BLOCKS, (float) 0.5, 3, false);
@@ -269,7 +274,7 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
         }
     }
 
-    private static boolean hasRecipe(EssenceStationBlockEntity entity) {
+    private boolean hasRecipe(EssenceStationBlockEntity entity) {
         Level level = entity.level;
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
         for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
@@ -284,35 +289,35 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
 
         assert Minecraft.getInstance().level != null;
         return
-               canInsertItemIntoOutputSlot(inventory, essenceRecipe.get().getResultItem(Minecraft.getInstance().level.registryAccess()))
+               canInsertItemIntoOutputSlot(inventory, essenceRecipe.get().getResultItem(Objects.requireNonNull(getLevel()).registryAccess()))
                 && hasOutputSpaceMaking(entity, essenceRecipe.get())
                 && hasCorrectItemCatalyst(entity, essenceRecipe.get())
                 && hasCorrectItemRecipe(entity, essenceRecipe.get())
                 && hasCorrectCountInInputSlotUpgrading(entity, essenceRecipe.get());
     }
 
-    private static boolean hasCorrectItemCatalyst(EssenceStationBlockEntity entity, EssenceStationRecipe recipe) {
+    private boolean hasCorrectItemCatalyst(EssenceStationBlockEntity entity, EssenceStationRecipe recipe) {
         return entity.itemHandler.getStackInSlot(0).getItem() == recipe.getIngredients().get(0).getItems()[0].getItem();
     }
 
-    private static boolean hasCorrectItemRecipe(EssenceStationBlockEntity entity, EssenceStationRecipe recipe) {
+    private boolean hasCorrectItemRecipe(EssenceStationBlockEntity entity, EssenceStationRecipe recipe) {
         return entity.itemHandler.getStackInSlot(1).getItem() == recipe.getIngredients().get(1).getItems()[0].getItem();
     }
 
-    private static boolean hasCorrectCountInInputSlotUpgrading(EssenceStationBlockEntity entity, EssenceStationRecipe recipe) {
+    private boolean hasCorrectCountInInputSlotUpgrading(EssenceStationBlockEntity entity, EssenceStationRecipe recipe) {
         return entity.itemHandler.getStackInSlot(1).getCount() >= recipe.getItemInCount();
     }
 
-    private static boolean hasOutputSpaceMaking(EssenceStationBlockEntity entity, EssenceStationRecipe recipe) {
-        return entity.itemHandler.getStackInSlot(2).getCount() + recipe.getResultItem(Minecraft.getInstance().level.registryAccess()).getCount() - 1 <
+    private boolean hasOutputSpaceMaking(EssenceStationBlockEntity entity, EssenceStationRecipe recipe) {
+        return entity.itemHandler.getStackInSlot(2).getCount() + recipe.getResultItem(Objects.requireNonNull(getLevel()).registryAccess()).getCount() - 1 <
                 entity.itemHandler.getStackInSlot(2).getMaxStackSize();
     }
 
-    private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack stack) {
+    private boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack stack) {
         return inventory.getItem(2).getItem() == stack.getItem() || inventory.getItem(2).isEmpty();
     }
 
-    private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
+    private boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
         return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount();
     }
 

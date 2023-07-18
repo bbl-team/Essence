@@ -63,8 +63,5 @@ public class EssenceStationRecipeCategory implements IRecipeCategory<EssenceStat
 
                 .addItemStack(new ItemStack(recipe.getResultItem(Minecraft.getInstance().level.registryAccess()).getItem(), recipe.getResultItem(Minecraft.getInstance().level.registryAccess()).getCount()));
 
-    //    builder.addSlot(RecipeIngredientRole.OUTPUT, 86, 60) //.addItemStack(recipe.getResultItem());
-    //            .addItemStack(new ItemStack(recipe.getResultItem(Minecraft.getInstance().level.registryAccess()).getItem(), recipe.getOutCount()));
-    //
     }
 }

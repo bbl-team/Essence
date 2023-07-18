@@ -1,7 +1,9 @@
 package com.benbenlaw.essence.block.entity.client;
 
+import com.benbenlaw.essence.block.custom.ResourceDuplicatorBlock;
 import com.benbenlaw.essence.block.entity.custom.ResourceDuplicatorBlockEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -23,6 +25,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 
 import java.util.Objects;
@@ -32,16 +35,16 @@ public class ResourceDuplicatorBlockEntityRenderer implements BlockEntityRendere
     public ResourceDuplicatorBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
     }
 
-    @Override
-    public void render(ResourceDuplicatorBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack,
-                       MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
 
+
+    @Override
+    public void render(ResourceDuplicatorBlockEntity pBlockEntity, float pPartialTick, @NotNull PoseStack pPoseStack,
+                       @NotNull MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
 
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
         ItemStack itemStack = pBlockEntity.getRenderStack();
 
         if (!itemStack.isEmpty()) {
-
             pPoseStack.pushPose();
 
             // Get the block's facing direction
@@ -49,6 +52,7 @@ public class ResourceDuplicatorBlockEntityRenderer implements BlockEntityRendere
 
             if (blockState.getBlock() == Blocks.AIR) {
                 // Handle air block case
+                pPoseStack.popPose(); // Ensure the pose stack is balanced
                 return; // or perform any other necessary actions
             }
 
@@ -59,6 +63,8 @@ public class ResourceDuplicatorBlockEntityRenderer implements BlockEntityRendere
                     0.5f + blockFacing.getStepY() * 0.5f,
                     0.5f + blockFacing.getStepZ() * 0.5f);
 
+            pPoseStack.mulPose(Axis.YN.rotationDegrees(pBlockEntity.getBlockState().getValue(ResourceDuplicatorBlock.FACING).toYRot()));
+           // pPoseStack.mulPose(Axis.XP.rotationDegrees(270));
             pPoseStack.scale(0.7f, 0.7f, 0.7f); //size
             BakedModel model = itemRenderer.getModel(itemStack, null, null, 0);
 
@@ -70,19 +76,14 @@ public class ResourceDuplicatorBlockEntityRenderer implements BlockEntityRendere
                     getLightLevel(Objects.requireNonNull(pBlockEntity.getLevel()), pBlockEntity.getBlockPos()),
                     OverlayTexture.NO_OVERLAY, model);
 
-            pPoseStack.popPose();
+            pPoseStack.popPose(); // Ensure the pose stack is balanced
         }
     }
-
-
 
     private int getLightLevel(Level level, BlockPos pos) {
         int bLight = level.getBrightness(LightLayer.BLOCK, pos);
         int sLight = level.getBrightness(LightLayer.SKY, pos);
         return LightTexture.pack(bLight, sLight);
     }
-
-
-
 
 }
