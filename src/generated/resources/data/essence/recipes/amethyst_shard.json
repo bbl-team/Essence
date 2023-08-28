@@ -1,0 +1,13 @@
+{
+  "type": "essence:resource_duplicator",
+  "essenceInCount": 1,
+  "ingredients": [
+    {
+      "item": "essence:advanced_ore_essence"
+    },
+    {
+      "item": "minecraft:amethyst_shard"
+    }
+  ],
+  "outCount": 3
+}

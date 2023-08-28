@@ -9,23 +9,23 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 public class ResourceDuplicatorRecipe implements Recipe<SimpleContainer> {
 
     private final ResourceLocation id;
-    private final ItemStack output;
     private final NonNullList<Ingredient> recipeItems;
     private final int essenceInCount;
     private final int outCount;
 
-    public ResourceDuplicatorRecipe(ResourceLocation id, ItemStack output,
+    public ResourceDuplicatorRecipe(ResourceLocation id,
                                     NonNullList<Ingredient> recipeItems, int essenceInCount, int outCount) {
         this.id = id;
-        this.output = output;
         this.recipeItems = recipeItems;
         this.essenceInCount = essenceInCount;
         this.outCount = outCount;
@@ -53,7 +53,7 @@ public class ResourceDuplicatorRecipe implements Recipe<SimpleContainer> {
 
     @Override
     public ItemStack assemble(SimpleContainer pContainer, RegistryAccess p_267052_) {
-        return output;
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -63,7 +63,7 @@ public class ResourceDuplicatorRecipe implements Recipe<SimpleContainer> {
 
     @Override
     public ItemStack getResultItem(RegistryAccess p_267052_) {
-        return output.copy();
+        return ItemStack.EMPTY;
     }
 
     public int getEssenceInCount() {
@@ -107,7 +107,6 @@ public class ResourceDuplicatorRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public ResourceDuplicatorRecipe fromJson(ResourceLocation pRecipeId, JsonObject pSerializedRecipe) {
-            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "output"));
 
             JsonArray ingredients = GsonHelper.getAsJsonArray(pSerializedRecipe, "ingredients");
             NonNullList<Ingredient> inputs = NonNullList.withSize(2, Ingredient.EMPTY);
@@ -118,11 +117,11 @@ public class ResourceDuplicatorRecipe implements Recipe<SimpleContainer> {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
 
-            return new ResourceDuplicatorRecipe(pRecipeId, output, inputs, essenceInCount, outCount);
+            return new ResourceDuplicatorRecipe(pRecipeId, inputs, essenceInCount, outCount);
         }
 
         @Override
-        public @Nullable ResourceDuplicatorRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+        public @Nullable ResourceDuplicatorRecipe fromNetwork(@NotNull ResourceLocation id, FriendlyByteBuf buf) {
             NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
             int essenceInCount = buf.readInt();
             int outCount = buf.readInt();
@@ -131,8 +130,7 @@ public class ResourceDuplicatorRecipe implements Recipe<SimpleContainer> {
                 inputs.set(i, Ingredient.fromNetwork(buf));
             }
 
-            ItemStack output = buf.readItem();
-            return new ResourceDuplicatorRecipe(id, output, inputs, essenceInCount, outCount);
+            return new ResourceDuplicatorRecipe(id, inputs, essenceInCount, outCount);
         }
 
         @Override
@@ -144,7 +142,6 @@ public class ResourceDuplicatorRecipe implements Recipe<SimpleContainer> {
             for (Ingredient ing : recipe.getIngredients()) {
                 ing.toNetwork(buf);
             }
-            buf.writeItemStack(recipe.output, false);
         }
     }
 }

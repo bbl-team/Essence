@@ -1,0 +1,13 @@
+{
+  "type": "essence:resource_duplicator",
+  "essenceInCount": 1,
+  "ingredients": [
+    {
+      "item": "essence:advanced_mob_essence"
+    },
+    {
+      "item": "minecraft:prismarine_crystals"
+    }
+  ],
+  "outCount": 3
+}

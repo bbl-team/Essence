@@ -1,0 +1,13 @@
+{
+  "type": "essence:resource_duplicator",
+  "essenceInCount": 24,
+  "ingredients": [
+    {
+      "item": "essence:basic_ore_essence"
+    },
+    {
+      "item": "minecraft:dirt"
+    }
+  ],
+  "outCount": 1
+}

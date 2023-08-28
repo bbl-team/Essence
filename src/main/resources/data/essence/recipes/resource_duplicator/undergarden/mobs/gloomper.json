@@ -1,0 +1,19 @@
+{
+  "type": "essence:resource_duplicator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "undergarden"
+    }
+  ],
+  "essenceInCount": 3,
+  "ingredients": [
+    {
+      "item": "essence:basic_mob_essence"
+    },
+    {
+      "item": "undergarden:raw_gloomper_leg"
+    }
+  ],
+  "outCount": 1
+}

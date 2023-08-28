@@ -1,0 +1,22 @@
+{
+  "type": "essence:resource_duplicator",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:ingots/cloggrum",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "essenceInCount": 5,
+  "ingredients": [
+    {
+      "item": "essence:basic_ore_essence"
+    },
+    {
+      "tag": "forge:ingots/cloggrum"
+    }
+  ],
+  "outCount": 2
+}

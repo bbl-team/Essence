@@ -1,0 +1,22 @@
+{
+  "type": "essence:resource_duplicator",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:ingots/netherrite",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "essenceInCount": 16,
+  "ingredients": [
+    {
+      "item": "essence:elite_ore_essence"
+    },
+    {
+      "tag": "forge:ingots/netherrite"
+    }
+  ],
+  "outCount": 1
+}

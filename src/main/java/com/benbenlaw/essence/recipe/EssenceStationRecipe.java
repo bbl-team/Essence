@@ -101,7 +101,7 @@ public class EssenceStationRecipe implements Recipe<SimpleContainer> {
                 new ResourceLocation(Essence.MOD_ID, "essence_station");
 
         @Override
-        public EssenceStationRecipe fromJson(@NotNull ResourceLocation pRecipeId, @NotNull JsonObject pSerializedRecipe) {
+        public @NotNull EssenceStationRecipe fromJson(@NotNull ResourceLocation pRecipeId, @NotNull JsonObject pSerializedRecipe) {
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(pSerializedRecipe, "output"));
 
             JsonArray ingredients = GsonHelper.getAsJsonArray(pSerializedRecipe, "ingredients");

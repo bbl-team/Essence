@@ -22,6 +22,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -35,9 +36,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuProvider, IInventoryHandlingBlockEntity {
 
@@ -269,7 +268,7 @@ public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuPr
 
                 pEntity.itemHandler.extractItem(0, recipeDuplicator.get().getEssenceInCount(), false);
 
-                pEntity.itemHandler.setStackInSlot(2, new ItemStack(recipeDuplicator.get().getResultItem(Objects.requireNonNull(getLevel()).registryAccess()).getItem(),
+                pEntity.itemHandler.setStackInSlot(2, new ItemStack (pEntity.itemHandler.getStackInSlot(1).getItem(),
                         pEntity.itemHandler.getStackInSlot(2).getCount() + recipeDuplicator.get().getOutCount()));
 
             }
@@ -295,7 +294,7 @@ public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuPr
                     !canInsertAmountIntoOutputSlot(inventory) ||
                     !hasCorrectCountInInputSlotMaking(entity, recipeDuplicator.get()) ||
                     !hasOutputSpaceMaking(entity, recipeDuplicator.get())) return false;
-            return canInsertItemIntoOutputSlot(inventory, resourceDuplicatorRecipe.getResultItem(Objects.requireNonNull(getLevel()).registryAccess()));
+            return canInsertItemIntoOutputSlot(inventory, itemHandler.getStackInSlot(1).getItem().asItem().getDefaultInstance());
         }).isPresent();
     }
 
@@ -305,7 +304,18 @@ public class ResourceDuplicatorBlockEntity extends BlockEntity implements MenuPr
 
     private boolean hasMakingItem(ResourceDuplicatorBlockEntity entity, ResourceDuplicatorRecipe recipe) {
         assert Minecraft.getInstance().level != null;
-        return recipe.getResultItem(Objects.requireNonNull(getLevel()).registryAccess()).getItem() == entity.itemHandler.getStackInSlot(1).getItem();
+
+        List<ItemStack> inputItems = Arrays.stream(recipe.getIngredients().get(1).getItems()).toList();
+
+        ItemStack slotItem = entity.itemHandler.getStackInSlot(1);
+
+        for (ItemStack inputItem : inputItems) {
+            if (ItemStack.isSameItem(slotItem, inputItem) && ItemStack.isSameItemSameTags(slotItem, inputItem)) {
+                return true; // Found a matching item in the inputItems list
+            }
+        }
+
+        return false; // No matching item found in the inputItems list
     }
 
     private boolean hasOutputSpaceMaking(ResourceDuplicatorBlockEntity entity, ResourceDuplicatorRecipe recipe) {

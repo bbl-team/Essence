@@ -1,9 +1,6 @@
 package com.benbenlaw.essence.config;
 
-import com.benbenlaw.essence.item.ModItems;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
+
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public final class ConfigFile {

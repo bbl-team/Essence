@@ -30,7 +30,7 @@ public class JEIEssencePlugin implements IModPlugin {
             new RecipeType<>(ResourceDuplicatorRecipeCategory.UID, ResourceDuplicatorRecipe.class);
 
     @Override
-    public ResourceLocation getPluginUid() {
+    public @NotNull ResourceLocation getPluginUid() {
         return new ResourceLocation(Essence.MOD_ID, "jei_plugin");
     }
 

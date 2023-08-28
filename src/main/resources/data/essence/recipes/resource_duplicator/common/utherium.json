@@ -1,0 +1,22 @@
+{
+  "type": "essence:resource_duplicator",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:gems/utherium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "essenceInCount": 4,
+  "ingredients": [
+    {
+      "item": "essence:elite_ore_essence"
+    },
+    {
+      "tag": "forge:gems/utherium"
+    }
+  ],
+  "outCount": 1
+}

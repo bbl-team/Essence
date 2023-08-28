@@ -1,5 +1,12 @@
 Essence Changelog
 
+2.1.0
+
+Requires Opolis Utilities now
+Moved to data gen for most recipes
+Resource duplicator recipe changed, output removed input item will always be the output item
+Added a few new recipes
+
 2.0.2
 
 Fixed crash when breaking the resource duplicator if it had an item in it

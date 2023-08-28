@@ -109,10 +109,6 @@ public class Essence {
 
         MenuScreens.register(ModMenuTypes.ESSENCE_STATION_MENU.get(), EssenceStationScreen::new);
         MenuScreens.register(ModMenuTypes.RESOURCE_DUPLICATOR_MENU.get(), ResourceDuplicatorScreen::new);
-
-  //      ItemBlockRenderTypes.setRenderLayer(ModBlocks.RESOURCE_DUPLICATOR.get(), RenderType.cutout());
-
-
         });
     }
 }

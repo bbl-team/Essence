@@ -1,0 +1,22 @@
+{
+  "type": "essence:resource_duplicator",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:gems/quartz",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "essenceInCount": 2,
+  "ingredients": [
+    {
+      "item": "essence:advanced_ore_essence"
+    },
+    {
+      "tag": "forge:gems/quartz"
+    }
+  ],
+  "outCount": 1
+}

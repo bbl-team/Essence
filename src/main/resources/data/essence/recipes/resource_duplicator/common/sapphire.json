@@ -1,0 +1,22 @@
+{
+  "type": "essence:resource_duplicator",
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:gems/sapphire",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ],
+  "essenceInCount": 3,
+  "ingredients": [
+    {
+      "item": "essence:advanced_ore_essence"
+    },
+    {
+      "tag": "forge:gems/sapphire"
+    }
+  ],
+  "outCount": 1
+}
