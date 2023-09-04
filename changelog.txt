@@ -1,5 +1,9 @@
 Essence Changelog
 
+2.1.1
+
+Rebuilt datagen recipes as essence output and resource output numbers were reversed
+
 2.1.0
 
 Requires Opolis Utilities now

@@ -1,6 +1,6 @@
 {
   "type": "essence:resource_duplicator",
-  "essenceInCount": 1,
+  "essenceInCount": 4,
   "ingredients": [
     {
       "item": "essence:advanced_mob_essence"
@@ -9,5 +9,5 @@
       "item": "minecraft:slime_ball"
     }
   ],
-  "outCount": 4
+  "outCount": 1
 }

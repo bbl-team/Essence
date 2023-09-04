@@ -1,6 +1,6 @@
 {
   "type": "essence:resource_duplicator",
-  "essenceInCount": 2,
+  "essenceInCount": 4,
   "ingredients": [
     {
       "item": "essence:elite_mob_essence"
@@ -9,5 +9,5 @@
       "item": "minecraft:ghast_tear"
     }
   ],
-  "outCount": 4
+  "outCount": 2
 }

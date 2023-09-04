@@ -1,12 +1,12 @@
 {
   "type": "essence:resource_duplicator",
-  "essenceInCount": 32,
+  "essenceInCount": 2,
   "ingredients": [
     {
-      "item": "essence:elite_mob_essence"
+      "item": "essence:advanced_mob_essence"
     },
     {
-      "item": "minecraft:nether_star"
+      "item": "minecraft:gunpowder"
     }
   ],
   "outCount": 1

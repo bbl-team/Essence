@@ -58,8 +58,8 @@ public class ResourceDuplicatorRecipeBuilder implements RecipeBuilder {
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pRecipeId))
                 .rewards(AdvancementRewards.Builder.recipe(pRecipeId)).requirements(RequirementsStrategy.OR);
 
-        pFinishedRecipeConsumer.accept(new Result(pRecipeId, this.resourceOutCount,
-                this.essenceInCount, this.ingredient, this.advancement, new ResourceLocation(pRecipeId.getNamespace(), "recipes/"
+        pFinishedRecipeConsumer.accept(new Result(pRecipeId, this.essenceInCount,
+                this.resourceOutCount, this.ingredient, this.advancement, new ResourceLocation(pRecipeId.getNamespace(), "recipes/"
                 + pRecipeId.getPath())));
 
     }

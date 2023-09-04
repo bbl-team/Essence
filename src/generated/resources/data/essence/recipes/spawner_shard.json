@@ -1,6 +1,6 @@
 {
   "type": "essence:resource_duplicator",
-  "essenceInCount": 1,
+  "essenceInCount": 8,
   "ingredients": [
     {
       "item": "essence:elite_mob_essence"
@@ -9,5 +9,5 @@
       "item": "essence:spawner_shard"
     }
   ],
-  "outCount": 8
+  "outCount": 1
 }

@@ -1,6 +1,6 @@
 {
   "type": "essence:resource_duplicator",
-  "essenceInCount": 1,
+  "essenceInCount": 2,
   "ingredients": [
     {
       "item": "essence:basic_mob_essence"
@@ -9,5 +9,5 @@
       "item": "minecraft:string"
     }
   ],
-  "outCount": 2
+  "outCount": 1
 }

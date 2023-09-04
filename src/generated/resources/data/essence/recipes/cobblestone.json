@@ -1,6 +1,6 @@
 {
   "type": "essence:resource_duplicator",
-  "essenceInCount": 24,
+  "essenceInCount": 1,
   "ingredients": [
     {
       "item": "essence:basic_ore_essence"
@@ -9,5 +9,5 @@
       "item": "minecraft:cobblestone"
     }
   ],
-  "outCount": 1
+  "outCount": 24
 }
