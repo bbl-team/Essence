@@ -1,5 +1,9 @@
 Essence Changelog
 
+2.1.2
+
+Fixed lapis and coal recipes
+
 2.1.1
 
 Rebuilt datagen recipes as essence output and resource output numbers were reversed

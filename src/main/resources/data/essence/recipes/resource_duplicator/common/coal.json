@@ -1,21 +1,12 @@
 {
   "type": "essence:resource_duplicator",
-  "conditions": [
-    {
-      "value": {
-        "tag": "minecraft:coals",
-        "type": "forge:tag_empty"
-      },
-      "type": "forge:not"
-    }
-  ],
   "essenceInCount": 1,
   "ingredients": [
     {
       "item": "essence:basic_mob_essence"
     },
     {
-      "tag": "minecraft:coals"
+      "item": "minecraft:coal"
     }
   ],
   "outCount": 2
