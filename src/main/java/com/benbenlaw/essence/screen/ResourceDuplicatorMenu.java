@@ -2,9 +2,10 @@ package com.benbenlaw.essence.screen;
 
 import com.benbenlaw.essence.block.ModBlocks;
 import com.benbenlaw.essence.block.entity.custom.ResourceDuplicatorBlockEntity;
-import com.benbenlaw.essence.screen.slot.MaxStackSizeOneSlot;
-import com.benbenlaw.essence.screen.slot.ModResultSlot;
-import com.benbenlaw.essence.screen.slot.ResourceDuplicatorCatalystSlot;
+import com.benbenlaw.essence.util.ModTags;
+import com.benbenlaw.opolisutilities.screen.slot.MaxStackSizeOneSlot;
+import com.benbenlaw.opolisutilities.screen.slot.utils.ModResultSlot;
+import com.benbenlaw.opolisutilities.screen.slot.utils.WhitelistTagInputSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -13,7 +14,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.items.SlotItemHandler;
 
 public class ResourceDuplicatorMenu extends AbstractContainerMenu {
 
@@ -36,7 +36,7 @@ public class ResourceDuplicatorMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
-            this.addSlot(new ResourceDuplicatorCatalystSlot(handler, 0, 12, 16));
+            this.addSlot(new WhitelistTagInputSlot(handler, 0, 12, 16, ModTags.Items.ESSENCES, 64));
             this.addSlot(new MaxStackSizeOneSlot(handler, 1, 86, 16));
             this.addSlot(new ModResultSlot(handler, 2, 86, 60));
         });

@@ -1,5 +1,10 @@
 Essence Changelog
 
+2.1.3
+
+Updated to Opolis Utilities 2.4.0 and moved to slot handler and inventory handlers from here instead
+Essence Station can now accept both catalysts and items through any direction except the bottom
+
 2.1.2
 
 Fixed lapis and coal recipes

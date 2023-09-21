@@ -1,6 +1,5 @@
 package com.benbenlaw.essence.block.entity.custom;
 
-import com.benbenlaw.essence.block.entity.IInventoryHandlingBlockEntity;
 import com.benbenlaw.essence.block.entity.ModBlockEntities;
 import com.benbenlaw.essence.item.ModItems;
 import com.benbenlaw.essence.networking.ModMessages;
@@ -8,6 +7,8 @@ import com.benbenlaw.essence.networking.packets.PacketSyncItemStackToClient;
 import com.benbenlaw.essence.recipe.EssenceStationRecipe;
 import com.benbenlaw.essence.screen.EssenceStationMenu;
 import com.benbenlaw.essence.util.ModTags;
+import com.benbenlaw.opolisutilities.util.inventory.IInventoryHandlingBlockEntity;
+import com.benbenlaw.opolisutilities.util.inventory.WrappedHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -56,14 +57,28 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
     private final Map<Direction, LazyOptional<WrappedHandler>> directionWrappedHandlerMap =
             Map.of(Direction.DOWN, LazyOptional.of(() -> new WrappedHandler(itemHandler, (i) -> i == 2, (i, s) -> false)),
 
-                    Direction.UP, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> index == 1,
-                            (index, stack) -> index == 1 && itemHandler.isItemValid(1, stack))),
+                    Direction.UP, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> index == 0,
+                            (index, stack) -> {
+                                if (index == 0 && itemHandler.isItemValid(0, stack)) {
+                                    // Add a condition to check for the specific item you want to allow
+                                    return stack.getTags().anyMatch(ModTags.Items.ESSENCE_STATION_CATALYSTS::equals);
+                                }
+                                if (index == 1 && itemHandler.isItemValid(1, stack)) {
+                                    // Add a condition to check for the specific item you want to allow
+                                    return itemHandler.isItemValid(1, stack);
+                                }
+                                return false;
+                            })),
 
                     Direction.NORTH, LazyOptional.of(() -> new WrappedHandler(itemHandler, (index) -> index == 0,
                             (index, stack) -> {
                                 if (index == 0 && itemHandler.isItemValid(0, stack)) {
                                     // Add a condition to check for the specific item you want to allow
                                     return stack.getTags().anyMatch(ModTags.Items.ESSENCE_STATION_CATALYSTS::equals);
+                                }
+                                if (index == 1 && itemHandler.isItemValid(1, stack)) {
+                                    // Add a condition to check for the specific item you want to allow
+                                    return itemHandler.isItemValid(1, stack);
                                 }
                                 return false;
                     })),
@@ -74,6 +89,10 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
                                     // Add a condition to check for the specific item you want to allow
                                     return stack.getTags().anyMatch(ModTags.Items.ESSENCE_STATION_CATALYSTS::equals);
                                 }
+                                if (index == 1 && itemHandler.isItemValid(1, stack)) {
+                                    // Add a condition to check for the specific item you want to allow
+                                    return itemHandler.isItemValid(1, stack);
+                                }
                                 return false;
                     })),
 
@@ -83,6 +102,10 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
                                     // Add a condition to check for the specific item you want to allow
                                     return stack.getTags().anyMatch(ModTags.Items.ESSENCE_STATION_CATALYSTS::equals);
                                 }
+                                if (index == 1 && itemHandler.isItemValid(1, stack)) {
+                                    // Add a condition to check for the specific item you want to allow
+                                    return itemHandler.isItemValid(1, stack);
+                                }
                                 return false;
                     })),
 
@@ -91,6 +114,10 @@ public class EssenceStationBlockEntity extends BlockEntity implements MenuProvid
                                 if (index == 0 && itemHandler.isItemValid(0, stack)) {
                                     // Add a condition to check for the specific item you want to allow
                                     return stack.getTags().anyMatch(ModTags.Items.ESSENCE_STATION_CATALYSTS::equals);
+                                }
+                                if (index == 1 && itemHandler.isItemValid(1, stack)) {
+                                    // Add a condition to check for the specific item you want to allow
+                                    return itemHandler.isItemValid(1, stack);
                                 }
                                 return false;
                     }))

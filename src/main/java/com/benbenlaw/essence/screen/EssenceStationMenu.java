@@ -2,8 +2,9 @@ package com.benbenlaw.essence.screen;
 
 import com.benbenlaw.essence.block.ModBlocks;
 import com.benbenlaw.essence.block.entity.custom.EssenceStationBlockEntity;
-import com.benbenlaw.essence.screen.slot.EssenceStationCatalystSlot;
-import com.benbenlaw.essence.screen.slot.ModResultSlot;
+import com.benbenlaw.essence.util.ModTags;
+import com.benbenlaw.opolisutilities.screen.slot.utils.ModResultSlot;
+import com.benbenlaw.opolisutilities.screen.slot.utils.WhitelistTagInputSlot;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -35,7 +36,7 @@ public class EssenceStationMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
-            this.addSlot(new EssenceStationCatalystSlot(handler, 0, 12, 16));
+            this.addSlot(new WhitelistTagInputSlot(handler, 0, 12, 16, ModTags.Items.ESSENCE_STATION_CATALYSTS, 1));
             this.addSlot(new SlotItemHandler(handler, 1, 86, 16));
             this.addSlot(new ModResultSlot(handler, 2, 86, 60));
         });
